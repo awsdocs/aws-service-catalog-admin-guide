@@ -105,7 +105,7 @@ Returns `true` if each member in a list of strings matches at least one value in
 ### Declaration<a name="fn-eachmemberin-declaration"></a>
 
 ```
-"Fn::EachMemberIn" : [[strings_to_check], strings_to_match]
+"Fn::EachMemberIn" : [[strings_to_check], [strings_to_match]]
 ```
 
 ### Parameters<a name="fn-eachmemberin-parameters"></a>
