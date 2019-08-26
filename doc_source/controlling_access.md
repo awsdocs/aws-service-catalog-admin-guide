@@ -30,9 +30,13 @@ The following are the AWS managed policies for AWS Service Catalog\.
 
 1. Choose the name \(not the check box\) of the IAM user\.
 
-1. On the **Permissions** tab, choose **Attach Policy**\.
+1. On the **Permissions** tab, choose **Add permissions**\.
 
-1. On the **Attach Policy** page, select the check box next to the managed policy for AWS Service Catalog, and then choose **Attach Policy**\.
+1. On the **Add permissions** page, choose **Attach existing policies directly**\.
+
+1. Select the check box next to the managed policy for AWS Service Catalog, and then choose **Next: Review**\.
+
+1.  On the **Permissions summary** page, choose **Add permissions**\. 
 
 1. \(Optional\) You must grant administrators additional permissions for Amazon S3 if they need to use a private CloudFormation template\. For more information, see [User Policy Examples](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-policies-s3.html) in the *Amazon Simple Storage Service Developer Guide*
 
@@ -66,7 +70,7 @@ Use the following procedure to ensure that your administrators and end users are
 
 Before end users can use a product to which you give access, you must provide them additional IAM permissions to allow them to use each of the underlying AWS resources in a product's AWS CloudFormation template\. For example, if a product template includes Amazon Relational Database Service \(Amazon RDS\), you must grant the users Amazon RDS permissions to launch the product\.
 
-The **ServiceCatalogEndUserFullAccess** and **ServiceCatalogEndUserAccess** policies grant access to the AWS Service Catalog end user console view\. When a user who has either of these policies chooses **Service Catalog** in the AWS Management Console, the end user console view displays\. 
+The **AWSServiceCatalogEndUserFullAccess** and **ServiceCatalogEndUserAccess** policies grant access to the AWS Service Catalog end user console view\. When a user who has either of these policies chooses **Service Catalog** in the AWS Management Console, the end user console view displays\. 
 
 If you apply the **ServiceCatalogEndUserAccess** policy, your users have access to the end user console, but they won't have the permissions that they need to launch products and manage provisioned products\. You can grant these permissions directly to an end user using IAM, but if you want to limit the access that end users have to AWS resources, you should attach the policy to a launch role\. You then use AWS Service Catalog to apply the launch role to a launch constraint for the product\. For more information about applying a launch role, launch role limitations, and a sample launch role, see [AWS Service Catalog Launch Constraints](constraints-launch.md)\.
 

@@ -7,7 +7,7 @@ After you have enabled CloudWatch metrics for AWS Service Catalog, you can view 
 
 ## Viewing AWS Service Catalog Metrics in the CloudWatch Console<a name="viewing_metrics_console"></a>
 
-AWS Service Catalog metrics can be viewed in the CloudWatch console\. The CloudWatch console provides a detailed view of AWS Service Catalog metrics, and you can tailor the views to suit your needs\.  For more information about CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.
+AWS Service Catalog metrics can be viewed in the CloudWatch console\. The CloudWatch console provides a detailed view of AWS Service Catalog metrics, and you can tailor the views to suit your needs\. For more information about CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.
 
 **To view metrics in the CloudWatch console**
 

@@ -27,9 +27,7 @@ You, or an administrator who manages your IAM permissions, must attach policies 
 
 1. Choose **Create policy** and do the following:
 
-   1. For **Create Your Own Policy**, choose **Select**\.
-
-   1. For **Policy Name**, type **ServiceCatalogAdmin\-AdditionalPermissions**\.
+   1. Choose the **JSON** tab\.
 
    1. Copy the following example policy and paste it in **Policy Document**:
 
@@ -62,6 +60,10 @@ You, or an administrator who manages your IAM permissions, must attach policies 
           ]
       }
       ```
+
+   1. Choose **Review policy**\.
+
+   1. For **Policy Name**, type **ServiceCatalogAdmin\-AdditionalPermissions**\.
 
    1. \(Optional\) You must grant administrators additional permissions for Amazon S3 if they need to use a private CloudFormation template\. For more information, see [User Policy Examples](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-policies-s3.html) in the *Amazon Simple Storage Service Developer Guide*
 

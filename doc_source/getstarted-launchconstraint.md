@@ -10,9 +10,7 @@ Without a launch constraint, you would need to grant additional IAM permissions 
 
 1. In the navigation pane, choose **Policies**\. Choose **Create policy** and do the following:
 
-   1. For **Create Your Own Policy**, choose **Select**\.
-
-   1. For **Policy Name**, type **linuxDesktopPolicy**\.
+   1. On the **Create policy** page, choose the **JSON** tab\.
 
    1. Copy the following example policy and paste it in **Policy Document**:
 
@@ -23,7 +21,6 @@ Without a launch constraint, you would need to grant additional IAM permissions 
               {
                   "Effect": "Allow",
                   "Action": [
-                      "catalog-user:*",
                       "cloudformation:CreateStack",
                       "cloudformation:DeleteStack",
                       "cloudformation:DescribeStackEvents",
@@ -34,6 +31,7 @@ Without a launch constraint, you would need to grant additional IAM permissions 
                       "cloudformation:UpdateStack",
                       "ec2:*",
                       "s3:GetObject",
+                      "servicecatalog:*",
                       "sns:*"
                   ],
                   "Resource": "*"
@@ -42,13 +40,19 @@ Without a launch constraint, you would need to grant additional IAM permissions 
       }
       ```
 
-   1. Choose **Create Policy**\.
+   1. Choose **Review policy**\.
+
+   1. For **Policy Name**, type **linuxDesktopPolicy**\.
+
+   1. Choose **Create policy**\.
 
 1. In the navigation pane, choose **Roles**\. Choose **Create role** and do the following:
 
    1. For **Select role type**, choose **AWS service** and then choose **Service Catalog**\. Select the **Service Catalog** use case and then choose **Next: Permissions**\.
 
-   1. Select the checkbox for the **linuxDesktopPolicy** policy, and then choose **Next: Review**\.
+   1. Search for the **linuxDesktopPolicy** policy and then select the checkbox\.
+
+   1. Choose **Next: Tags**, and then **Next: Review**\.
 
    1. For **Role name**, type **linuxDesktopLaunchRole**\.
 

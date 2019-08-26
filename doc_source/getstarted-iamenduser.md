@@ -12,11 +12,7 @@ To allow an end user to launch a product, you must grant access to the `Provisio
 
 1. Choose **Create policy** and do the following:
 
-   1. For **Create Your Own Policy**, choose **Select**\.
-
-   1. For **Policy Name**, type **ServiceCatalogEndusers\-AdditionalPermissions**\.
-
-   1. Copy the following example policy and paste it in **Policy Document**:
+   1. Choose the **JSON** tab\. Copy the following example policy and paste it in **Policy Document**:
 
       ```
       {
@@ -33,7 +29,11 @@ To allow an end user to launch a product, you must grant access to the `Provisio
       }
       ```
 
-   1. Choose **Create Policy**\.
+   1. Choose **Review policy**\.
+
+   1. For **Policy Name**, type **ServiceCatalogEndusers\-AdditionalPermissions**\.
+
+   1. Choose **Create policy**\.
 
 1. In the navigation pane, choose **Groups**\.
 
@@ -59,6 +59,6 @@ To allow an end user to launch a product, you must grant access to the `Provisio
 
    1. Choose **Add user to group**\.
 
-   1. Select the checkbox for the **Endusers** group and choose **Next: Review**\.
+   1. Select the checkbox for the **Endusers** group and choose **Next: Tags** and then **Next: Review**\.
 
    1. On the **Review** page, choose **Create user**\. Download or copy the credentials and then choose **Close**\.

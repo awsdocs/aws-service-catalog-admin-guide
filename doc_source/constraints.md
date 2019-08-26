@@ -5,5 +5,6 @@ To control which rules are applied when the end user launches a product from a s
 **Topics**
 + [Launch Constraints](constraints-launch.md)
 + [Notification Constraints](constraints-notification.md)
-+ [Template Constraints](catalogs_constraints_template-constraints.md)
++ [Resource Update Constraints](constraints-resourceupdate.md)
 + [Stack Set Constraints](constraints-stackset.md)
++ [Template Constraints](catalogs_constraints_template-constraints.md)

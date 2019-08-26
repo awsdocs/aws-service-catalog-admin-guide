@@ -6,7 +6,7 @@ Use the following procedure to create an SNS topic and subscribe to it\.
 
 **To create an SNS topic and a subscription**
 
-1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v2/home](https://console.aws.amazon.com/sns/v2/home)\.
+1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
 
 1. Choose **Create topic**\.
 

@@ -22,4 +22,4 @@ Before you create a new version of a product, test your product updates in AWS C
 
    Choose **Save**\.
 
- You can also use AWS CodePipeline to create and configure a pipeline to deploy your product template to AWS Service Catalog and deliver changes you have made in your source repository\. For more information, see [Tutorial: Create a Pipeline That Deploys to AWS Service Catalog](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-S3-servicecatalog.html)\. 
+ You can also use CodePipeline to create and configure a pipeline to deploy your product template to AWS Service Catalog and deliver changes you have made in your source repository\. For more information, see [Tutorial: Create a Pipeline That Deploys to AWS Service Catalog](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-S3-servicecatalog.html)\. 

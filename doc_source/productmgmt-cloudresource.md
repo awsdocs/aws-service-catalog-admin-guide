@@ -33,4 +33,4 @@
 
 1. On the **Review** page, verify that the information is correct, and then choose **Confirm and upload**\. After a few seconds, the product appears on the **Products** page\. You might need to refresh your browser to see the product\.
 
- You can also use AWS CodePipeline to create and configure a pipeline to deploy your product template to AWS Service Catalog and deliver changes you have made in your source repository\. For more information, see [Tutorial: Create a Pipeline That Deploys to AWS Service Catalog](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-S3-servicecatalog.html)\. 
+ You can also use CodePipeline to create and configure a pipeline to deploy your product template to AWS Service Catalog and deliver changes you have made in your source repository\. For more information, see [Tutorial: Create a Pipeline That Deploys to AWS Service Catalog](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-S3-servicecatalog.html)\. 
