@@ -39,14 +39,12 @@ To complete these steps, you must obtain the account ID of the target AWS accoun
 
 1. On the **Portfolios** page, select the portfolio that you want to share, and choose **Share Portfolio**\.
 
-1. In the **Enter AWS account ID** window, type the account ID of the AWS account that you are sharing with\. Then, choose **Share**\. If sharing succeeds, a message on the **Portfolios** page confirms that the portfolio is linked with the target account\. It also provides a URL that the recipient administrator must use to import the portfolio\.
-
-1. Send the URL to the AWS Service Catalog administrator of the target account\. The URL opens the **Import Portfolio** page with the ARN of the shared portfolio automatically provided\.
+1. In the **Enter AWS account ID** window, type the account ID of the AWS account that you are sharing with\. Then, choose **Share**\. If sharing succeeds, a message on the **Portfolios** page confirms that the portfolio is shared\.
 
 ## Importing a Portfolio<a name="catalogs_portfolios_sharing_importing"></a>
 
 If an AWS Service Catalog administrator for another AWS account shares a portfolio with you, import that portfolio into your account so that you can distribute its products to your end users\.
 
-To import the portfolio, you must get a URL for importing the portfolio from the administrator\.
+To import the portfolio, you must get portfolio ID for importing the portfolio from the administrator\.
 
-Open the URL, and on the **Import Portfolio** page, choose **Import**\. The **Portfolios** page displays, and the portfolio is shown in the **Imported Portfolios** table\.
+Open the AWS Service Catalog console, and on the **Portfolio** page, switch to **Import** tab, then choose **Import portfolio** from **Action** dropdown. In the **Import portfolio** window, type the portfolio ID to complete the import\.
