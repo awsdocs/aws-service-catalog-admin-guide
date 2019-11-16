@@ -1,6 +1,6 @@
 # Grant Permissions to AWS Service Catalog End Users<a name="getstarted-iamenduser"></a>
 
-Before the end user can use AWS Service Catalog, you must grant access to the AWS Service Catalog end user console view\. To grant access, you attach policies to the IAM user, group, or role that is used by the end user\. In the following procedure, we attach the **ServiceCatalogEndUserAccess** policy to an IAM group\. For more information, see [Predefined AWS Managed Policies](controlling_access.md#permissions-managed-policies)\.
+Before the end user can use AWS Service Catalog, you must grant access to the AWS Service Catalog end user console view\. To grant access, you attach policies to the IAM user, group, or role that is used by the end user\. In the following procedure, we attach the **AWSServiceCatalogEndUserReadOnlyAccess** policy to an IAM group\. For more information, see [Predefined AWS Managed Policies](controlling_access.md#permissions-managed-policies)\.
 
 To allow an end user to launch a product, you must grant access to the `ProvisionProduct` action\. You can do so using an inline policy, as shown in the following procedure\.
 
@@ -43,7 +43,7 @@ To allow an end user to launch a product, you must grant access to the `Provisio
 
    1. In the search field, type **ServiceCatalog** to filter the policy list\.
 
-   1. Select the checkboxes for the **ServiceCatalogEndUserAccess** and **ServiceCatalogEndusers\-AdditionalPermissions** policies, and then choose **Next Step**\.
+   1. Select the checkboxes for the **AWSServiceCatalogEndUserReadOnlyAccess** and **ServiceCatalogEndusers\-AdditionalPermissions** policies, and then choose **Next Step**\.
 
    1. On the **Review page**, choose **Create Group**\.
 
