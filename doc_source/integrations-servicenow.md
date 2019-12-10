@@ -1,4 +1,4 @@
-# Connector for ServiceNow<a name="integrations-servicenow"></a>
+# AWS Service Catalog Connector for ServiceNow<a name="integrations-servicenow"></a>
 
 To help customers integrate provisioning secure, compliant, and pre\-approved AWS products into their ServiceNow portal, AWS created the AWS Service Catalog Connector for ServiceNow\.
 
@@ -9,10 +9,11 @@ AWS Service Catalog Connector for ServiceNow synchronizes AWS Service Catalog po
 + [Getting Started](#getting-started)
 + [Release Notes](#release-notes)
 + [Baseline Permissions](baseline-permissions.md)
-+ [Configure AWS Service Catalog](configure-sc.md)
++ [Configuring AWS Service Catalog](configure-sc.md)
 + [Creating StackSet Constraints](stackset-constraints.md)
-+ [Configure ServiceNow](configure-snow.md)
-+ [Validate Configurations](validate-configurations.md)
++ [Relating Budgets to Products and Portfolios](servicenow-budgets.md)
++ [Configuring ServiceNow](configure-snow.md)
++ [Validating Configurations](validate-configurations.md)
 + [ServiceNow Additional Administrator Features](additional-configurations.md)
 + [Upgrade Instructions](upgrade-instructions.md)
 
@@ -39,24 +40,27 @@ For each AWS account, the Connector for ServiceNow also requires two AWS Identit
 Baseline permissions enable an end user to provision the following AWS services: Amazon Simple Storage Service and Amazon Elastic Compute Cloud\. To allow end users to provision AWS services beyond the baseline permissions, you must include the additional AWS service permissions to the launch role\. For information about initial permissions setup actions, see [Baseline Permissions](baseline-permissions.md)\.
 
 **Note**  
- To use an AWS CloudFormation template to set up the AWS configurations of the Connector for ServiceNow, see [Connector for ServiceNow\-AWS Configuration](https://s3.amazonaws.com/servicecatalogconnector/SC_ConnectorForServiceNowv2.0.2-AWS_Configurations.yml)\. 
+ To use an AWS CloudFormation template to set up the AWS configurations of the Connector for ServiceNow, see the two JSON AWS Configurations for: [Connector for ServiceNow v2\.3\.3 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.3+-AWS_Configurations_final.json) and [Connector for ServiceNow v2\.3\.3 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.3+-AWS_Configurations_GovCloud_final.json)\. 
 
 ### ServiceNow Prerequisites<a name="servicenow-prereqs"></a>
 
-In addition to the AWS account, you need a ServiceNow instance to install the ServiceNow Connector scoped application\. The initial installation should occur in either an enterprise sandbox or a [ServiceNow Personal Developer Instance](https://developer.servicenow.com/app.do#!/training/article/app_store_learnv2_buildmyfirstapp_kingston_servicenow_basics/app_store_learnv2_buildmyfirstapp_kingston_personal_developer_instances?v=kingston) \(PDI\), depending on your organization’s technology governance requirements\. The ServiceNow administrator needs the admin role to install the Connector for ServiceNow scoped application\.
+In addition to the AWS account, you need a ServiceNow instance to install the ServiceNow Connector scoped application\. The initial installation should occur in either an enterprise sandbox or a [ServiceNow Personal Developer Instance](https://developer.servicenow.com/app.do#!/document/content/app_store_doc_getting_started_newyork_topic_lyf_bf2_3r?v=newyork) \(PDI\), depending on your organization’s technology governance requirements\. The ServiceNow administrator needs the admin role to install the Connector for ServiceNow scoped application\.
 
 ## Release Notes<a name="release-notes"></a>
 
-**Version 2\.0\.2** of the AWS Service Catalog Connector for ServiceNow includes:
+**Version 2\.3\.3** of the AWS Service Catalog Connector for ServiceNow includes:
++ The ability for administrators to view portfolio and product budgets and actual costs\. \(Requires budgets to be associated within AWS Service Catalog\.\)
++ Support for AWS GovCloud West region\.
++ The ability for end users to choose accounts and regions for StackSet deployments\.
++ The ability to view provisioned product events and outputs in the ServiceNow request item\. This includes closure of ServiceNow request items when products are terminated\.
+
+This version also includes prior AWS Service Catalog Connector for ServiceNow features such as:
 + Support for AWS CloudFormation StackSets, enabling launch of AWS Service Catalog products across multiple regions and accounts\.
 + Support for AWS CloudFormation Change Sets, enabling a preview of resource changes from a launch or update\.
 + Display of AWS Service Catalog portfolios \(including correlated products\) as sub\-categories in the ServiceNow Service Catalog\.
-
-This version also includes prior AWS Service Catalog Connector for ServiceNow features such as:
-+ Support AWS Service Catalog self\-service actions\.
-+ Enable ServiceNow administrators to delete AWS Service Catalog products in ServiceNow that do not have self\-service actions associated\.
-+ Render AWS Service Catalog products in the ServiceNow Portal page\.
-+ Enable multi\-account support\.
-+ Request update against an existing AWS Service Catalog product provisioned in ServiceNow\.
-+ Validate AWS Regions and identities associated with syncing AWS and ServiceNow\.
-+ Sync product details in the My Asset/CMDB view\.
++ Support AWS Service Catalog self\-service actions using AWS Systems Manager documents\.
++ Support AWS Service Catalog post\-provision operational actions to update and terminate products\.
++ Rendering of AWS Service Catalog products in the ServiceNow Portal page\.
++ Multi\-account support\.
++ Validation of AWS Regions and identities associated with syncing AWS and ServiceNow\.
++ Synchronization of product details in the My Asset/CMDB view\.

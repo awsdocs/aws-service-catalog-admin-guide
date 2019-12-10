@@ -5,8 +5,12 @@ The following table describes important additions to the AWS Service Catalog doc
 
 | Feature | Description | Release Date | 
 | --- | --- | --- | 
+| Connector for Jira Service Desk | To begin using the Connector for Jira Service Desk, see [AWS Service Catalog Connector for Jira Service Desk](integrations-jiraservicedesk.md)\. | November 21, 2019 | 
+| New Version of Connector for ServiceNow | To learn about the updates to the Connector for ServiceNow, see [AWS Service Catalog Connector for ServiceNow](integrations-servicenow.md)\. | November 18, 2019 | 
+| New Security Chapter | To learn about security in AWS Service Catalog, see [Security in AWS Service Catalog](security.md)\. | October 31, 2019 | 
+| Changing Provisioned Product Owner | To learn about how to change the owner of provisioned products, see [Changing Provisioned Product Owner](change-pp-owner.md)\. | October 31, 2019 | 
 | New Resource Update Constraint | To learn about how to use the RESOURCE\_UPDATE constraint to update tags in provisioned products, see [AWS Service Catalog Resource Update Constraints](constraints-resourceupdate.md)\. | April 17, 2019 | 
-| Connector for ServiceNow | To begin using the Connector for ServiceNow, see [Connector for ServiceNow](integrations-servicenow.md)\. | March 19, 2019 | 
+| Connector for ServiceNow | To begin using the Connector for ServiceNow, see [AWS Service Catalog Connector for ServiceNow](integrations-servicenow.md)\. | March 19, 2019 | 
 | Support for AWS CloudFormation StackSets | To begin using AWS CloudFormation StackSets, see [Using AWS CloudFormation StackSets](using-stacksets.md)\. | November 14, 2018 | 
 | Self\-service actions | To begin using self\-service actions, see [AWS Service Catalog Self\-Service Actions](using-service-actions.md)\. | October 17, 2018 | 
 | CloudWatch metrics | To learn about CloudWatch metrics, see [AWS Service Catalog CloudWatch Metrics](cloudwatch-metrics.md)\. | September 26, 2018 | 

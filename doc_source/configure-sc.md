@@ -1,4 +1,4 @@
-# Configure AWS Service Catalog<a name="configure-sc"></a>
+# Configuring AWS Service Catalog<a name="configure-sc"></a>
 
 Now that you have created two IAM users with baseline permissions in each account, the next step is to configure AWS Service Catalog\. This section describes how to configure AWS Service Catalog to have a portfolio that includes an Amazon S3 bucket product\. Use the Amazon S3 template located at [Creating an Amazon S3 Bucket for Website Hosting for your preliminary product](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-s3.html#scenario-s3-bucket-website)\. Copy and save the Amazon S3 template to your device\.
 

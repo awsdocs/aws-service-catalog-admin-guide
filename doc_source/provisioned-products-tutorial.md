@@ -2,7 +2,7 @@
 
 You can identify the user who provisioned a product and resources associated with the product using the AWS Service Catalog console\. This tutorial helps translate this example to your own specific provisioned products\. 
 
-To manage all provisioned products for the account, you need **AWSServiceCatalogAdminFullAccess** or equivalent access to the provisioned product write operations\. For more information, see [Authentication and Access Control for AWS Service Catalog](controlling_access.md)\.
+To manage all provisioned products for the account, you need **AWSServiceCatalogAdminFullAccess** or equivalent access to the provisioned product write operations\. For more information, see [Identity and Access Management in AWS Service Catalog](controlling_access.md)\.
 
 **To identify the user who provisioned a product and the associated resources**
 

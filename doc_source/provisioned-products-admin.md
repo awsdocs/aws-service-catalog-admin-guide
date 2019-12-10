@@ -1,6 +1,6 @@
 # Managing All Provisioned Products as Administrator<a name="provisioned-products-admin"></a>
 
-To manage all provisioned products for the account, you will need **AWSServiceCatalogAdminFullAccess** or equivalent access to the provisioned product write operations\. For more information, see [Authentication and Access Control for AWS Service Catalog](controlling_access.md)\.
+To manage all provisioned products for the account, you will need **AWSServiceCatalogAdminFullAccess** or equivalent access to the provisioned product write operations\. For more information, see [Identity and Access Management in AWS Service Catalog](controlling_access.md)\.
 
 **To view and manage all provisioned products**
 

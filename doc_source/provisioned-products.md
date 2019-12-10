@@ -4,4 +4,5 @@ AWS Service Catalog provides an interface for managing provisioned products\. Yo
 
 **Topics**
 + [Managing All Provisioned Products as Administrator](provisioned-products-admin.md)
++ [Changing Provisioned Product Owner](change-pp-owner.md)
 + [Tutorial: Identifying User Resource Allocation](provisioned-products-tutorial.md)

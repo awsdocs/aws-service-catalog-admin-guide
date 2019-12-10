@@ -30,9 +30,9 @@ Make sure you are installing the update set in a non\-production/sandbox environ
 
 1.  Choose **User Criteria Scoped API** and then choose **Activate**\. 
 
-1.  Download the **Connector for ServiceNow update set** from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/f0b117a3db32320093a7d7a0cf961912/)\. For users installing the update set on a ServiceNow Personal Developer Instance \(PDI\), download the code from [Connector for ServiceNow version 2\.0\.2 update set\.](https://s3.amazonaws.com/servicecatalogconnector/AWS_SC_update_set_2.0.2.xml.gz) 
+1.  Download the **Connector for ServiceNow update set** from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/f0b117a3db32320093a7d7a0cf961912/)\. For users installing the update set on a ServiceNow Personal Developer Instance \(PDI\), download the code from [Connector for ServiceNow version 2\.3\.3 update set\.](https://servicecatalogconnector.s3.amazonaws.com/AWS_SC_update_set_2.3.3.xml) 
 
-    The Connector for ServiceNow version 2\.0\.2 update set may be applied to a “Kingston,” “London,” or "Madrid" platform release of ServiceNow\. 
+    The Connector for ServiceNow version 2\.3\.3 update set may be applied to a “London,” “Madrid,” or "New York" platform release of ServiceNow\. 
 
 1.  From your ServiceNow dashboard, type **update sets** in the navigation panel in the upper left\. 
 
@@ -48,9 +48,9 @@ Make sure you are installing the update set in a non\-production/sandbox environ
 
 1.  Choose **Commit Update Set** to apply the update set and create the application\. This procedure should complete 100%\. 
 
-**To update permissions**
+**To update AWS permissions**
 
-1. Go to [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\. Following the instructions there, create a policy called **SCConnectorAdmin** for ServiceNow administrators to delete AWS Service Catalog products in ServiceNow that do not have self\-service actions associated\. Copy the following policy and paste it into **Policy Document**:
+1. Go to [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\. Following the instructions there, create a policy called **SCConnectorAdmin** for ServiceNow administrators to delete AWS Service Catalog products in ServiceNow that do not have self\-service actions associated\. ServiceNow administrators can also view budgets associated to AWS Service Catalog portfolios and products\. Copy the following policy and paste it into **Policy Document**:
 
    ```
                                    {
@@ -64,7 +64,9 @@ Make sure you are installing the update set in a non\-production/sandbox environ
                                "servicecatalog:DeleteProduct",
                                "servicecatalog:DeleteConstraint",
                                "servicecatalog:DeleteProvisionedProductPlan",
-                               "servicecatalog:DeleteProvisioningArtifact"
+                               "servicecatalog:DeleteProvisioningArtifact",
+                               "servicecatalog:ListBudgetsForResource",
+                               "budgets:ViewBudget"
                            ],
                            "Resource": "*"
                        }
@@ -139,6 +141,8 @@ The **ServiceCatalogServiceNowAdditionalPermissions** AWS policy is no longer ne
 **AWSCloudFormationFullAccess** now includes additional permissions for ChangeSets\.
 
 1.  Attach the **ServiceCatalogSSMActionsBaseline** and **AWSCloudFormationFullAccess ** IAM policies to the **SCConnectLaunch** role, which were created during the [Baseline Permissions](baseline-permissions.md) setup\. 
+
+1.  The Connector for ServiceNow includes the ability for ServiceNow administrators to view budgets related to AWS Service Catalog products and portfolios\. AWS Service Catalog administrators can create or associate budgets to portfolios and products\. For information about creating and associating budgets, see [Managing Budgets](catalogs_budgets.md)\. 
 
 **To add a change request type**
 

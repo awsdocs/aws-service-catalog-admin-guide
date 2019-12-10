@@ -21,6 +21,6 @@ AWS sends you a confirmation email after the sign up process is complete\. At an
 Catalog administrators and end users require different IAM permissions to use AWS Service Catalog\. As a catalog administrator, you must have IAM permissions that allow you to access the AWS Service Catalog administrator console, create products, and manage products\. Before your end users can use your products, you must grant them permissions that allow them to access the AWS Service Catalog end user console, launch products, and manage launched products as provisioned products\.
 
 AWS Service Catalog provides many of these permissions using managed policies\. AWS maintains these policies and provides them in the AWS Identity and Access Management \(IAM\) service\. You can use these policies by attaching them to the IAM users, groups, or roles that you and your end users use\.
-+ [Authentication and Access Control for AWS Service Catalog](controlling_access.md)
++ [Identity and Access Management in AWS Service Catalog](controlling_access.md)
 + [Grant Permissions to AWS Service Catalog Administrators](getstarted-iamadmin.md)
 + [Grant Permissions to AWS Service Catalog End Users](getstarted-iamenduser.md)

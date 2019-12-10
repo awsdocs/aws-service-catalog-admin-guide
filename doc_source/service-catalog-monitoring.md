@@ -1,4 +1,4 @@
-# Monitoring AWS Service Catalog<a name="service-catalog-monitoring"></a>
+# Monitoring in AWS Service Catalog<a name="service-catalog-monitoring"></a>
 
 You can monitor your AWS Service Catalog resources using Amazon CloudWatch, which collects and processes raw data from AWS Service Catalog into readable metrics\. These statistics are recorded for a period of two weeks, so that you can access historical information and gain a better perspective on how your service is performing\. AWS Service Catalog metric data is automatically sent to CloudWatch in 1\-minute periods\. For more information about CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.
 

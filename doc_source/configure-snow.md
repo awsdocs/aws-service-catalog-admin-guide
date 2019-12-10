@@ -1,4 +1,4 @@
-# Configure ServiceNow<a name="configure-snow"></a>
+# Configuring ServiceNow<a name="configure-snow"></a>
 
 After completing the IAM and AWS Service Catalog configurations, the next configuration area to set up is ServiceNow\. Installation tasks within ServiceNow include:
 + Clear the ServiceNow platform cache\.
@@ -20,15 +20,15 @@ Clear the web browser cache to clear previous rendered product forms\.
 
 ## Installing ServiceNow Connector Scoped Application<a name="install-snow-connector"></a>
 
-The AWS Service Catalog Connector for ServiceNow is released as a conventional ServiceNow scoped application via a [ServiceNow Update Set](https://docs.servicenow.com/bundle/london-application-development/page/build/system-update-sets/reference/get-started-update-sets.html)\. ServiceNow update sets are code changes to the out\-of\-the\-box platform and enable developers to move code across ServiceNow instance environments\. The Connector for ServiceNow update set is available to download in the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/f0b117a3db32320093a7d7a0cf961912/)\. For users installing the update set on a ServiceNow Personal Developer Instance \(PDI\), download the code from [Connector for ServiceNow version 2\.0\.2 update set\.](https://s3.amazonaws.com/servicecatalogconnector/AWS_SC_update_set_2.0.2.xml.gz) 
+The AWS Service Catalog Connector for ServiceNow is released as a conventional ServiceNow scoped application via a [ServiceNow Update Set](https://docs.servicenow.com/bundle/london-application-development/page/build/system-update-sets/reference/get-started-update-sets.html)\. ServiceNow update sets are code changes to the out\-of\-the\-box platform and enable developers to move code across ServiceNow instance environments\. The Connector for ServiceNow update set is available to download in the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/f0b117a3db32320093a7d7a0cf961912/)\. For users installing the update set on a ServiceNow Personal Developer Instance \(PDI\), download the code from [Connector for ServiceNow version 2\.3\.3 update set\.](https://servicecatalogconnector.s3.amazonaws.com/AWS_SC_update_set_2.3.3.xml) 
 
- The Connector for ServiceNow version 2\.0\.2 update set may be applied to a “Kingston,” “London,” or "Madrid" platform release of ServiceNow\. 
+ The Connector for ServiceNow version 2\.3\.3 update set may be applied to a “London,” "Madrid," or "New York" platform release of ServiceNow\. 
 
  If you do not already have a ServiceNow instance, begin with the first step below\. If you already have a ServiceNow instance, proceed to **To download AWS Service Catalog Connector for ServiceNow**\. 
 
 **To obtain a ServiceNow instance**
 
-1. Go to [ Obtaining a Personal Developer Instance](https://developer.servicenow.com/app.do#!/training/article/app_store_learnv2_buildmyfirstapp_jakarta_servicenow_basics/app_store_learnv2_buildmyfirstapp_jakarta_personal_developer_instances?v=jakarta)\.
+1. Go to [ Obtaining a Personal Developer Instance](https://developer.servicenow.com/app.do#!/document/content/app_store_doc_getting_started_newyork_topic_lyf_bf2_3r?v=newyork)\.
 
 1. Create ServiceNow developer program credentials\.
 
@@ -67,15 +67,15 @@ The AWS Service Catalog Connector for ServiceNow is released as a conventional S
 To enable the AWS Service Catalog Connector for ServiceNow scoped application named **AWS Service Catalog**, the system admin must configure specific platform tables, forms, and views\.
 
 **Note**  
-If you are upgrading from an earlier version, the Enable permissions on ServiceNow Platform tables \(User Criteria and Catalog Variable Set\) are no longer needed for the Connector for ServiceNow\.
+If you are upgrading from an earlier version, the permissions on ServiceNow Platform tables \(User Criteria, Catalog Variable Set, and Category\) are no longer needed for the Connector for ServiceNow\.
 
-**Enable permissions on ServiceNow Platform tables \(Category and Catalog Item Category\)**
+**Enable permissions on ServiceNow Platform table \(Catalog Item Category\)**
 
-For AWS products to display under AWS portfolios as sub\-categories in the ServiceNow Service Catalog, you need to modify the Application Access form for Category and Catalog Item Category tables\. 
+For AWS products to display under AWS portfolios as sub\-categories in the ServiceNow Service Catalog, you need to modify the Application Access form for Catalog Item Category tables\. This action is necessary because a ServiceNow scoped API is not available for the Catalog Item Category table\. 
 
 1. Enter "Tables" in the Navigator and choose **System Definition**, then choose **Tables**\.
 
-1. In the list of tables, search for a table with label "Category" \(or with the name "sc\_category"\)\. The list of tables will be displayed\. Choose **Category** to view the form defining the table\.\.
+1. In the list of tables, search for a table with label "Catalog Item Category" \(or with the name "sc\_cat\_item\_category"\)\. The list of tables will be displayed\. Choose **Category** to view the form defining the table\.\.
 
 1. Choose the "Application Access" tab on the form and choose the "Can Create", “Can Update, and "Can delete" checkboxes on the form\. Choose the "Update" button\.
 
@@ -89,7 +89,7 @@ The AWS Service Catalog scoped app comes with two ServiceNow roles that enable a
 
 1. Type **Users** in the navigator and select **System Security – Users**\. 
 
-1.  Select a user to grant one or both previous roles \(such as admin\) to\. You can also [Create a User](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/users-and-groups/task/t_CreateAUser.html)\. 
+1.  Select a user to grant one or both previous roles \(such as admin\) to\. You can also [Create a User](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/users-and-groups/task/t_CreateAUser.html)\. 
 
 1.  Choose **Edit** on the **Roles** tab of the form\. 
 
@@ -109,7 +109,7 @@ The AWS Service Catalog scoped app comes with two ServiceNow roles that enable a
 
 1.  If you are upgrading from a previous version of the AWS Service Catalog scoped app, you must remove the **AWS Product Termination** change request type before creating a new change request type\. 
 
-1.  You must add a new change request type called **AWS Provisioned Product Event** for the scoped application to trigger an automated change request in Change Management\. For instructions, see [Add a new change request type](https://docs.servicenow.com/bundle/istanbul-it-service-management/page/product/change-management/task/t_AddNewChangeType.html)\. 
+1.  You must add a new change request type called **AWS Provisioned Product Event** for the scoped application to trigger an automated change request in Change Management\. For instructions, see [Add a new change request type](https://docs.servicenow.com/bundle/newyork-it-service-management/page/product/change-management/task/t_AddNewChangeType.html)\. 
 
 1.  Open an existing change request\. 
 
@@ -129,21 +129,57 @@ Having installed and configured the AWS Service Catalog Connector for ServiceNow
 
 **To configure the AWS Service Catalog scoped application and applicable roles**
 
-1.  On your ServiceNow dashboard, create a role called **order\_aws\_sc\_products**\. This role is granted to any users with permission to order AWS Service Catalog products\. For instructions, see [Create a role](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/roles/task/t_CreateARole.html)\. 
+1.  On your ServiceNow dashboard, create a role called **order\_aws\_sc\_products**\. This role is granted to any users with permission to order AWS Service Catalog products\. For instructions, see [Create a role](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/roles/task/t_CreateARole.html)\. 
 
 1.  Grant roles to the following users: 
    + **System Administrator \(admin\)**: For simplicity in this example, user **admin** is designated as the administrator of the AWS Service Catalog scoped application\. Grant this user both of the administrative permissions from the adapter, **x\_126749\_aws\_sc\_portfolio\_manager** and **x\_126749\_aws\_sc\_account\_admin**\. In a real scenario, these roles would likely be granted to two different users\.
    + **Abel Tuter**: The user **abel\.tuter** is chosen as an illustrative end user\. Grant Abel the new role **order\_aws\_sc\_products**\. This allows him to order products from AWS\.
 
+## Fix Script for AWS Account Type Entries<a name="servicenow-script"></a>
+
+ Version 2\.3\.3 of the Connector for ServiceNow enables ServiceNow administrators to identify AWS account type entries as End User or Sync User\. If you've installed previous versions of the Connector for ServiceNow, version 2\.3\.3 comes with a ServiceNow Fix Script that automatically updates the account type entries\. 
+
+**To run the Fix Script**
+
+1. In the ServiceNow dashboard, in the left menu, search for **Fix scripts**\.
+
+1. Find the script named **Update AWS account type**\.
+
+1. Choose **Run Fix Script**\.
+
 ## Configuring Accounts<a name="configure-accounts"></a>
 
 1. Log in as the system administrator\. 
 
-1. In the AWS Service Catalog scoped app **Accounts** menu, create two accounts, one for sync and one for provisioning: **snow\-stsuser\-account** and **snow\-sync\-account\.** Note that the names here are chosen for convenience to make it easy to see which IAM user they correspond to \(these are the users created in the AWS setup\)\.
+1. In the AWS Service Catalog scoped app **Accounts** menu, create two entries for every AWS account, one for sync and one for provisioning: **snow\-stsuser\-account** and **snow\-sync\-account\.** You need to use the keys and secret keys from the users you created in AWS\. Note that the names here are chosen for convenience to make it easy to see which IAM user they correspond to \(these are the users created in the AWS setup\)\.
 
-1.  The **snow\-stsuser\-account** account has no regions configured\. The **snow\-sync\-account** user has one region configured, matching the region where AWS Service Catalog is defined\. You validate this in the next section\. 
+   For the GovCloud regions and account entry type "Type" are required for the Connector to point to the appropriate GovCloud endpoints\. There are two new regions available: **US GovCloud \(US West\) \- FIPS 2**, and **US GovCloud \(US West\)**, used for Non\-FIPS\.
 
-1.  Note that you need to use the keys and secret keys from the users you created in AWS\. 
+**To create SyncUser account entry**
+
+1. Enter the name as an account entry identifier, such as **snow\-sync\-account** \(for Commercial region\), or **snow\-sync\-account\_GovCloud** \(for GovCloud region\)\.
+
+1. Enter AWS access key and secret access key from the AWS account sync user IAM configurations\.
+
+1. Enter account entry type of **Sync User**\. Note that this feature was added to address the unique GovCloud endpoints\.
+
+1. Choose the Commercial or GovCloud region\. Validate this in the next section\.
+
+1. Save or update the sync user information\.
+
+**To create EndUser account entry**
+
+1. Enter the name as an account entry identifier, such as **snow\-stsuser\-account** \(for Commercial region\), or **snow\-stsuser\-account\_GovCloud** \(for GovCloud region\)\.
+
+1. Enter AWS access key and secret access key from the AWS account sync user IAM configurations\.
+
+1. Enter account entry type of **End User**\. Note that this feature was added to address the unique GovCloud endpoints\.
+
+1. For GovCloud users only: select the GovCloud region\. This is required to address the unique service endpoints in GovCloud\.
+**Note**  
+For commercial regions, do not select a region in the End User account entry\.
+
+1. Save or update the end user information\.
 
 ## Validating Connectivity to AWS Regions<a name="validate-regions"></a>
 

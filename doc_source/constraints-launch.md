@@ -4,7 +4,7 @@ A launch constraint specifies the AWS Identity and Access Management \(IAM\) rol
 
 Launch constraints are associated with a product within the portfolio \(product\-portfolio association\), not at the portfolio level or to a product across all portfolios\. To associate a launch constraint with all products in a portfolio, you must apply the launch constraint to each product individually\.
 
-Without a launch constraint, end users must launch and manage products using their own IAM credentials\. To do so, they must have permissions for AWS CloudFormation, the AWS services used by the products, and AWS Service Catalog\. By using a launch role, you can instead limit the end users' permissions to the minimum that they require for that product\. For more information about end user permissions, see [Authentication and Access Control for AWS Service Catalog](controlling_access.md)\.
+Without a launch constraint, end users must launch and manage products using their own IAM credentials\. To do so, they must have permissions for AWS CloudFormation, the AWS services used by the products, and AWS Service Catalog\. By using a launch role, you can instead limit the end users' permissions to the minimum that they require for that product\. For more information about end user permissions, see [Identity and Access Management in AWS Service Catalog](controlling_access.md)\.
 
 To create and assign IAM roles, you must have the following IAM administrative permissions:
 + `iam:CreateRole`

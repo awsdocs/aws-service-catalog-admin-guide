@@ -1,7 +1,7 @@
 # Baseline Permissions<a name="baseline-permissions"></a>
 
-This section provides instructions on how to set up the baseline AWS users and permissions needed for the AWS Service Catalog Connector for ServiceNow\. For each AWS account, the Connector for ServiceNow requires two IAM users and roles:
-+ **AWS Service Catalog Sync User**: IAM user to sync AWS portfolios and products to ServiceNow catalog items \(ServiceCatalogAdminReadOnly managed policy\)\.
+This section provides instructions on how to set up the baseline AWS users and permissions needed for the AWS Service Catalog Connector for ServiceNow\. For each AWS account, the Connector for ServiceNow requires two IAM users and three roles:
++ **AWS Service Catalog Sync User**: IAM user to sync AWS portfolios and products to ServiceNow catalog items \(**AWSServiceCatalogAdminReadOnlyAccess** managed policy\)\.
 + **AWS Service Catalog End User role**: IAM role configured as an AWS Service Catalog end user and assigned to each AWS Service Catalog portfolio\.
 + **AWS Service Catalog End User**: Enables Connector for ServiceNow to provision AWS products by assuming a role that contains the trust relationship with the account and policies needed for the end user privileges in AWS Service Catalog\.
 + **SCConnect Launch role**: IAM role used to place baseline AWS service permissions into the AWS Service Catalog launch constraints\. Configuring this role enables segregation of duty through provisioning product resources on behalf of the ServiceNow end user\. The SCConnectLaunch role baseline contains permissions to Amazon EC2 and Amazon S3 services\. If your products contain more AWS services, you must either include those services in the  `SCConnectLaunch` role or create new launch roles\.
@@ -12,7 +12,7 @@ The following section describes how to create the AWS Service Catalog Sync user 
 
 **To create AWS Service Catalog sync user**
 
-1. Go to [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\. Following the instructions there, create a policy called **SCConnectorAdmin** for ServiceNow administrators to delete AWS Service Catalog products in ServiceNow that do not have self\-service actions associated\. Copy the following policy and paste it into **Policy Document**:
+1. Go to [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\. Following the instructions there, create a policy called **SCConnectorAdmin** for ServiceNow administrators to delete AWS Service Catalog products in ServiceNow that do not have self\-service actions associated\. ServiceNow administrators can also view budgets associated to AWS Service Catalog portfolios and products\. Copy the following policy and paste it into **Policy Document**:
 
    ```
    {
@@ -25,7 +25,9 @@ The following section describes how to create the AWS Service Catalog Sync user 
    			"servicecatalog:DeleteProduct",
    			"servicecatalog:DeleteConstraint",
    			"servicecatalog:DeleteProvisionedProductPlan",
-   			"servicecatalog:DeleteProvisioningArtifact"
+   			"servicecatalog:DeleteProvisioningArtifact",
+   			"servicecatalog:ListBudgetsForResource",
+   			"budgets:ViewBudget"
    		],
    		"Resource": "*"
    	}]
@@ -34,7 +36,9 @@ The following section describes how to create the AWS Service Catalog Sync user 
 
 1. Go to [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\. Following the instructions there, create a sync user \(that is, SCSyncUser\)\. The user needs programmatic and AWS Management Console access to follow the Connector for ServiceNow installation instructions\.
 
-1. Set permissions for your sync user \(SCSyncUser\)\. Choose **Attach existing policies directly** and select the **ServiceCatalogAdminReadOnlyAccess** and **SCConnectorAdmin** policies\.
+1. Set permissions for your sync user \(SCSyncUser\)\. Choose **Attach existing policies directly** and select the ****AWSServiceCatalogAdminReadOnlyAccess**** and **SCConnectorAdmin** policies\.
+**Note**  
+The **ServiceCatalogAdminReadOnlyAccess** policy was deprecated\. If you are using a current version of the Connector for ServiceNow, update your SCSyncUser with the correct managed policy: ****AWSServiceCatalogAdminReadOnlyAccess****\.
 
 1. Review and choose **Create User**\.
 
@@ -81,10 +85,10 @@ The following section describes how to create the AWS Service Catalog Sync user 
        }
    ```
 **Note**  
-Replace **123456789123** with your account information\. The [Connector for ServiceNow\-AWS Configuration](https://s3.amazonaws.com/servicecatalogconnector/SC_ConnectorForServiceNowv2.0.2-AWS_Configurations.yml) file includes the StackSet permissions\.
+Replace **123456789123** with your account information\. The [Connector for ServiceNow v2\.3\.3 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.3+-AWS_Configurations_final.json) and [Connector for ServiceNow v2\.3\.3 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.3+-AWS_Configurations_GovCloud_final.json) files include the stack set permissions\.
 
 1. Add the following permissions \(policies\) to the role:
-   + **AWSServiceCatalogEndUserFullAccess**
+   + **AWSServiceCatalogEndUserFullAccess** \- Note: The **ServiceCatalogEndUserFullAccess** policy was deprecated\. If you are using a current version of the Connector for ServiceNow, update the SCSyncUser with the correct AWS managed policy\.
    + **StackSet \(inline policy\)**
    + **AmazonEC2ReadOnlyAccess**
    + **AmazonS3ReadOnlyAccess** \- Note: For AWS Service Catalog products using AWS CloudFormation StackSets, you need to modify the SnowEndUser role to include the ReadOnly permissions for the service\(s\) you want to provision\. For example, to provision an Amazon S3 bucket, include the AmazonS3ReadOnlyAccess policy to the SnowEndUser role\.

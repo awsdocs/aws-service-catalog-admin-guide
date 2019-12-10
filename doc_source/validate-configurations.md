@@ -1,4 +1,4 @@
-# Validate Configurations<a name="validate-configurations"></a>
+# Validating Configurations<a name="validate-configurations"></a>
 
  You are now ready to validate the AWS Service Catalog Connector for ServiceNow installation procedures\. 
 
@@ -22,18 +22,22 @@
 
 **To view provisioned products**
 
-1.  Go to **My Assets** in the ServiceNow standard user interface\.
+End users can view products in two places on the ServiceNow portal through request items \(Requests\) or My AWS Products widgets\.
 
-1.  In **My Asset Requests**, view the requests that have been made\. 
+**To view products in Service Portal Requests**
 
-1.  To view the product, personalize the list view to show the associated configuration item by choosing the Settings icon in the header row of the table of asset requests\. 
+1. Choose **Requests** in the home page navigation bar\.
 
-1.  Select **Configuration item \(configuration\_item\)** and add it to the view  with the **>** button\. Move it to below **Stage** in the list\. 
+1. Select the request item of your choice \(contains the AWS Service Catalog product and request item number\)\.
+**Note**  
+The request item is updated with AWS product events and outputs\. When the AWS product is terminated, the ServiceNow request item will go into a state of **Closed Complete**\.
 
-1.  The configuration item \(the product that was ordered\) shows in the list of assets\. 
+**To view products in the My AWS Products widget Service Portal Requests**
 
-1.  To view the product, choose the configuration item name\. 
+1. Go to the My AWS Products widget
 
-1.  View the **Outputs** for the provisioned product in the **Outputs** tab of the form\. 
+1. Choose the AWS Select Product name that you entered into the request form\.
 
-1.  View the provisioning history of the product in the **Product Events** tab of the form\. 
+1. View the **Status and Product Events**
+
+1. If you want to perform post\-provisioned operational actions, choose **Request Update**, **Request Self\-Service Action**, or **Terminate**\.

@@ -2,7 +2,7 @@
 
 Give users access to portfolios by using IAM users, groups, and roles\. The best way to provide portfolio access for many users is to put the users in an IAM group and grant access to that group\. That way you can simply add and remove users from the group to manage portfolio access\. For more information, see [IAM Users and Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html) in the *IAM User GuideUsing IAM*\.
 
-In addition to access to a portfolio, IAM users must also have access to the AWS Service Catalog end user console\. You grant access to the console by applying permissions in IAM\. For more information, see [Authentication and Access Control for AWS Service Catalog](controlling_access.md)\.
+In addition to access to a portfolio, IAM users must also have access to the AWS Service Catalog end user console\. You grant access to the console by applying permissions in IAM\. For more information, see [Identity and Access Management in AWS Service Catalog](controlling_access.md)\.
 
 **To grant portfolio access to users or groups**
 

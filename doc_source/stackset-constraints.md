@@ -22,7 +22,7 @@
 
 1. Choose **Submit**\.
 
-Note that the [Connector for ServiceNow\-AWS Configuration](https://s3.amazonaws.com/servicecatalogconnector/SC_ConnectorForServiceNowv2.0.2-AWS_Configurations.yml) template creates the permissions as well as outputs needed for StackSet constraints\. Example StackSet outputs: 
+Note that the [Connector for ServiceNow v2\.3\.3 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.3+-AWS_Configurations_final.json) and [Connector for ServiceNow v2\.3\.3 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.3+-AWS_Configurations_GovCloud_final.json) templates create the permissions as well as outputs needed for stack set constraints\. Example stack set outputs: 
 
 ```
             SCStackSetAdministratorRoleARN 
