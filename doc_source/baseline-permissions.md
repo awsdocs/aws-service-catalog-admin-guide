@@ -26,7 +26,7 @@ The following section describes how to create the AWS Service Catalog Sync user 
    			"servicecatalog:DeleteConstraint",
    			"servicecatalog:DeleteProvisionedProductPlan",
    			"servicecatalog:DeleteProvisioningArtifact",
-   			"servicecatalog:ListBudgetsForResource",
+            "servicecatalog:ListBudgetsForResource",
             "servicecatalog:SearchProductsAsAdmin",
             "servicecatalog:ListPortfoliosForProduct",
             "servicecatalog:ListPrincipalsForPortfolio",
