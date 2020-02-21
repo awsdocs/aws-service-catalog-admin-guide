@@ -31,7 +31,7 @@ The following section describes how to create the AWS Service Catalog Sync user 
             "servicecatalog:ListPortfoliosForProduct",
             "servicecatalog:ListPrincipalsForPortfolio",
             "servicecatalog:ListAcceptedPortfolioShares",            
-   			"budgets:ViewBudget"
+            "budgets:ViewBudget"
    		],
    		"Resource": "*"
    	}]
