@@ -60,7 +60,7 @@
 + The ability for Jira Service Desk users to request AWS Service Catalog products through Jira Service Desk\.
 + Support for AWS Service Catalog self\-service actions for Jira Service Desk users to update and terminate products\.
 + Support for AWS CloudFormation StackSets, enabling launch of AWS Service Catalog products across multiple regions and accounts\.
-+ Support for CloudFront Change Sets, enabling a preview of resource changes prior to a launch or update\.
++ Support for CloudFormation Change Sets, enabling a preview of resource changes prior to a launch or update\.
 + Support for multiple AWS accounts\.
 + Support for FIPS endpoints and usage in the AWS GovCloud West region\.
 + Support for the latest releases of Jira Service Desk Server and Data Center versions\.
