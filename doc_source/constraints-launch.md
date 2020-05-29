@@ -57,8 +57,7 @@ The `servicecatalog:ProvisionProduct`, `servicecatalog:TerminateProduct`, and `s
       "Statement":[  
          {  
             "Effect":"Allow",
-            "Action":[  
-               "catalog-user:*",
+            "Action":[
                "cloudformation:CreateStack",
                "cloudformation:DeleteStack",
                "cloudformation:DescribeStackEvents",
