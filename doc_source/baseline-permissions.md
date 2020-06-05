@@ -15,23 +15,27 @@ The following section describes how to create the AWS Service Catalog Sync user 
 1. Go to [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\. Following the instructions there, create a policy called **SCConnectorAdmin** for ServiceNow administrators to delete AWS Service Catalog products in ServiceNow that do not have self\-service actions associated\. ServiceNow administrators can also view budgets associated to AWS Service Catalog portfolios and products\. Copy the following policy and paste it into **Policy Document**:
 
    ```
-   {
-   	"Version": "2012-10-17",
-   	"Statement": [{
-   		"Sid": "VisualEditor0",
-   		"Effect": "Allow",
-   		"Action": [
-   			"servicecatalog:DisassociateProductFromPortfolio",
-   			"servicecatalog:DeleteProduct",
-   			"servicecatalog:DeleteConstraint",
-   			"servicecatalog:DeleteProvisionedProductPlan",
-   			"servicecatalog:DeleteProvisioningArtifact",
-   			"servicecatalog:ListBudgetsForResource",
-   			"budgets:ViewBudget"
-   		],
-   		"Resource": "*"
-   	}]
-   }
+      {
+         "Version": "2012-10-17",
+         "Statement": [{
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+               "servicecatalog:DisassociateProductFromPortfolio",
+               "servicecatalog:DeleteProduct",
+               "servicecatalog:DeleteConstraint",
+               "servicecatalog:DeleteProvisionedProductPlan",
+               "servicecatalog:DeleteProvisioningArtifact",
+               "servicecatalog:ListBudgetsForResource",
+               "servicecatalog:SearchProductsAsAdmin",
+               "servicecatalog:ListPortfoliosForProduct",
+               "servicecatalog:ListPrincipalsForPortfolio",
+               "servicecatalog:ListAcceptedPortfolioShares",            
+               "budgets:ViewBudget"
+            ],
+            "Resource": "*"
+         }]
+      }
    ```
 
 1. Go to [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\. Following the instructions there, create a sync user \(that is, SCSyncUser\)\. The user needs programmatic and AWS Management Console access to follow the Connector for ServiceNow installation instructions\.
