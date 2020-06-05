@@ -20,9 +20,9 @@ Clear the web browser cache to clear previous rendered product forms\.
 
 ## Installing ServiceNow Connector Scoped Application<a name="install-snow-connector"></a>
 
-The AWS Service Catalog Connector for ServiceNow is released as a conventional ServiceNow scoped application via a [ServiceNow Update Set](https://docs.servicenow.com/bundle/london-application-development/page/build/system-update-sets/reference/get-started-update-sets.html)\. ServiceNow update sets are code changes to the out\-of\-the\-box platform and enable developers to move code across ServiceNow instance environments\. The Connector for ServiceNow update set is available to download in the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/f0b117a3db32320093a7d7a0cf961912/)\. For users installing the update set on a ServiceNow Personal Developer Instance \(PDI\), download the code from [Connector for ServiceNow version 2\.3\.3 update set\.](https://servicecatalogconnector.s3.amazonaws.com/AWS_SC_update_set_2.3.3.xml) 
+The AWS Service Catalog Connector for ServiceNow is released as a conventional ServiceNow scoped application via a [ServiceNow Update Set](https://servicecatalogconnector.s3.amazonaws.com/AWS_SC_update_set_2.3.4.xml)\. ServiceNow update sets are code changes to the out\-of\-the\-box platform and enable developers to move code across ServiceNow instance environments\. The Connector for ServiceNow update set is available to download in the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/f0b117a3db32320093a7d7a0cf961912/)\. For users installing the update set on a ServiceNow Personal Developer Instance \(PDI\), download the code from [Connector for ServiceNow version 2\.3\.4 update set\.](https://servicecatalogconnector.s3.amazonaws.com/AWS_SC_update_set_2.3.4.xml) 
 
- The Connector for ServiceNow version 2\.3\.3 update set may be applied to a “London,” "Madrid," or "New York" platform release of ServiceNow\. 
+ The Connector for ServiceNow version 2\.3\.4 update set may be applied to a "Madrid," "New York," or "Orlando" platform release of ServiceNow\. 
 
  If you do not already have a ServiceNow instance, begin with the first step below\. If you already have a ServiceNow instance, proceed to **To download AWS Service Catalog Connector for ServiceNow**\. 
 
@@ -54,7 +54,7 @@ The AWS Service Catalog Connector for ServiceNow is released as a conventional S
 
 1.  Select **Import Update Set from XML** and upload the release XML file\. 
 
-1.  Select the **AWS Service Catalog Connector for ServiceNow** update set\. 
+1.  Select the **AWS Service Catalog \- 2\.3\.4** update set\. 
 
 1.  Choose **Preview Update Set**, which makes ServiceNow validate the connector update set\. 
 
@@ -78,8 +78,6 @@ For AWS products to display under AWS portfolios as sub\-categories in the Servi
 1. In the list of tables, search for a table with label "Catalog Item Category" \(or with the name "sc\_cat\_item\_category"\)\. The list of tables will be displayed\. Choose **Category** to view the form defining the table\.\.
 
 1. Choose the "Application Access" tab on the form and choose the "Can Create", “Can Update, and "Can delete" checkboxes on the form\. Choose the "Update" button\.
-
-1. Repeat the steps used on the Category table above for the "Catalog Item Category" table\. Type **sc\_cat\_item\_category** in the “Go to Name Search” field\.
 
 ## ServiceNow Permissions for Administrators of the Connector Scoped App\.<a name="admin-permissions-scoped-app"></a>
 
@@ -137,7 +135,7 @@ Having installed and configured the AWS Service Catalog Connector for ServiceNow
 
 ## Fix Script for AWS Account Type Entries<a name="servicenow-script"></a>
 
- Version 2\.3\.3 of the Connector for ServiceNow enables ServiceNow administrators to identify AWS account type entries as End User or Sync User\. If you've installed previous versions of the Connector for ServiceNow, version 2\.3\.3 comes with a ServiceNow Fix Script that automatically updates the account type entries\. 
+ Version 2\.3\.4 of the Connector for ServiceNow enables ServiceNow administrators to identify AWS account type entries as End User or Sync User\. If you've installed previous versions of the Connector for ServiceNow, version 2\.3\.4 comes with a ServiceNow Fix Script that automatically updates the account type entries\. 
 
 **To run the Fix Script**
 

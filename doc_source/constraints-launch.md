@@ -58,7 +58,7 @@ The `servicecatalog:ProvisionProduct`, `servicecatalog:TerminateProduct`, and `s
          {  
             "Effect":"Allow",
             "Action":[  
-               "catalog-user:*",
+               "servicecatalog:*",
                "cloudformation:CreateStack",
                "cloudformation:DeleteStack",
                "cloudformation:DescribeStackEvents",
@@ -93,11 +93,17 @@ Next, assign the role to the product as a launch constraint\. This tells AWS Ser
 
 1. Choose the portfolio that contains the product\.
 
-1. Expand **Constraints** and choose **Add constraints**\.
+1. Choose the **Constraints** tab and choose **Create constraint**\.
 
-1. Choose the product from **Product** and set **Constraint type** to **Launch**\. Choose **Continue**\.
+1. Choose the product from **Product** and choose **Launch** under **Constraint type**\. Choose **Continue**\.
 
-1. For **IAM role**, choose the launch role\. Choose **Submit**\.
+1. In the **Launch constraint** section, you can select an IAM role from your account, enter an IAM role ARN, or enter the role name\.
+
+   If you specify the role name, when an account uses the launch constraint, the IAM role with that name in the account will be used\. This allows launch\-role constraints to be account\-agnostic so you can create fewer resources per shared account\. 
+**Note**  
+The given role name must exist in the account used to create the launch constraint and the account of the user who launches a product with this launch constraint\. 
+
+1. After specifying the IAM role, choose **Create**\.
 
 ## Verify That the Launch Constraint Is Applied<a name="constraints-launch-test"></a>
 

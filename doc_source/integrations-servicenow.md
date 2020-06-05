@@ -27,6 +27,8 @@ AWS Service Catalog allows you to centrally manage commonly deployed AWS service
 
 Before installing the AWS Service Catalog Connector for ServiceNow, verify that you have the necessary permissions in your AWS account and ServiceNow instance\.
 
+For a video showing how to integrate AWS products into your ServiceNow portal, see [Integrate AWS products into Your ServiceNow Portal](https://youtu.be/cf_nWrr-CfU)\.
+
 ### AWS prerequisites<a name="aws-prereqs"></a>
 
 To get started you need an AWS account to configure your AWS portfolios and products\. For details, see [Setting Up for AWS Service Catalog](setup.md)\.
@@ -40,7 +42,7 @@ For each AWS account, the Connector for ServiceNow also requires two AWS Identit
 Baseline permissions enable an end user to provision the following AWS services: Amazon Simple Storage Service and Amazon Elastic Compute Cloud\. To allow end users to provision AWS services beyond the baseline permissions, you must include the additional AWS service permissions to the launch role\. For information about initial permissions setup actions, see [Baseline Permissions](baseline-permissions.md)\.
 
 **Note**  
- To use an AWS CloudFormation template to set up the AWS configurations of the Connector for ServiceNow, see the two JSON AWS Configurations for: [Connector for ServiceNow v2\.3\.3 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.3+-AWS_Configurations_final.json) and [Connector for ServiceNow v2\.3\.3 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.3+-AWS_Configurations_GovCloud_final.json)\. 
+ To use an AWS CloudFormation template to set up the AWS configurations of the Connector for ServiceNow, see the two JSON AWS Configurations for: [Connector for ServiceNow v2\.3\.4 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.4+-AWS_Configurations_final.json) and [Connector for ServiceNow v2\.3\.4 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.4+-AWS_Configurations_GovCloud_final.json)\. 
 
 ### ServiceNow Prerequisites<a name="servicenow-prereqs"></a>
 
@@ -48,7 +50,9 @@ In addition to the AWS account, you need a ServiceNow instance to install the Se
 
 ## Release Notes<a name="release-notes"></a>
 
-**Version 2\.3\.3** of the AWS Service Catalog Connector for ServiceNow includes:
+**Version 2\.3\.4** of the AWS Service Catalog Connector for ServiceNow includes a fix to the ServiceNow platform regression supporting the scoped app call `Object.getPrototypeOf(...)` to create and return an object safe for cross\-scope access\. Prior to this fix, customers would receive a `prototype_not_allowed` error when validating regions within the AWS Service Catalog Connector on the latest ServiceNow platform releases or patches \(Orlando, New York, and Madrid\)\.
+
+This version also includes prior AWS Service Catalog Connector for ServiceNow features such as:
 + The ability for administrators to view portfolio and product budgets and actual costs\. \(Requires budgets to be associated within AWS Service Catalog\.\)
 + Support for AWS GovCloud West region\.
 + The ability for end users to choose accounts and regions for StackSet deployments\.

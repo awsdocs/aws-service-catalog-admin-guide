@@ -12,7 +12,7 @@ Without a launch constraint, you would need to grant additional IAM permissions 
 
    1. On the **Create policy** page, choose the **JSON** tab\.
 
-   1. Copy the following example policy and paste it in **Policy Document**:
+   1. Copy the following example policy and paste it in **Policy Document**, replacing the placeholder JSON in the text field:
 
       ```
       {
@@ -60,10 +60,10 @@ Without a launch constraint, you would need to grant additional IAM permissions 
 
 1. Open the AWS Service Catalog console at [https://console\.aws\.amazon\.com/servicecatalog/](https://console.aws.amazon.com/servicecatalog/)\.
 
-1. Choose the **Engineering Tools** portfolio\.
+1. Choose the **All engineering tools** portfolio\.
 
-1. On the portfolio details page, expand the **Constraints** section, and then choose **Add constraints**\.
+1. On the portfolio details page, choose the **Constraints** tab, and then choose **Create constraint**\.
 
 1. For **Product**, choose **Linux Desktop**, and for **Constraint type**, choose **Launch**\. Choose **Continue**\.
 
-1. On the **Launch constraint** page, for **IAM role**, choose **linuxDesktopLaunchRole**, and then choose **Submit**\.
+1. On the **Launch constraint** page, choose **Search IAM roles**, choose **linuxDesktopLaunchRole**, and then choose **Submit**\.

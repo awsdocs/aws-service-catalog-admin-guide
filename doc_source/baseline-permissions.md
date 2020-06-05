@@ -15,27 +15,27 @@ The following section describes how to create the AWS Service Catalog Sync user 
 1. Go to [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\. Following the instructions there, create a policy called **SCConnectorAdmin** for ServiceNow administrators to delete AWS Service Catalog products in ServiceNow that do not have self\-service actions associated\. ServiceNow administrators can also view budgets associated to AWS Service Catalog portfolios and products\. Copy the following policy and paste it into **Policy Document**:
 
    ```
-      {
-         "Version": "2012-10-17",
-         "Statement": [{
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-               "servicecatalog:DisassociateProductFromPortfolio",
-               "servicecatalog:DeleteProduct",
-               "servicecatalog:DeleteConstraint",
-               "servicecatalog:DeleteProvisionedProductPlan",
-               "servicecatalog:DeleteProvisioningArtifact",
-               "servicecatalog:ListBudgetsForResource",
-               "servicecatalog:SearchProductsAsAdmin",
-               "servicecatalog:ListPortfoliosForProduct",
-               "servicecatalog:ListPrincipalsForPortfolio",
-               "servicecatalog:ListAcceptedPortfolioShares",            
-               "budgets:ViewBudget"
-            ],
-            "Resource": "*"
-         }]
-      }
+     {
+            "Version": "2012-10-17",
+            "Statement": [{
+               "Sid": "VisualEditor0",
+               "Effect": "Allow",
+               "Action": [
+                  "servicecatalog:DisassociateProductFromPortfolio",
+                  "servicecatalog:DeleteProduct",
+                  "servicecatalog:DeleteConstraint",
+                  "servicecatalog:DeleteProvisionedProductPlan",
+                  "servicecatalog:DeleteProvisioningArtifact",
+                  "servicecatalog:ListBudgetsForResource",
+                  "servicecatalog:SearchProductsAsAdmin",
+                  "servicecatalog:ListPortfoliosForProduct",
+                  "servicecatalog:ListPrincipalsForPortfolio",
+                  "servicecatalog:ListAcceptedPortfolioShares",            
+                  "budgets:ViewBudget"
+               ],
+               "Resource": "*"
+            }]
+         }
    ```
 
 1. Go to [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\. Following the instructions there, create a sync user \(that is, SCSyncUser\)\. The user needs programmatic and AWS Management Console access to follow the Connector for ServiceNow installation instructions\.
@@ -50,13 +50,13 @@ The **ServiceCatalogAdminReadOnlyAccess** policy was deprecated\. If you are usi
 
 ## Creating AWS Service Catalog End User<a name="scenduser"></a>
 
- The following section describes how to create the AWS Service Catalog end user and associate the appropriate IAM permission\. To perform this task, you need IAM permissions to create new users\. 
+ The following section describes how to create the AWS Service Catalog end user and associate the appropriate IAM permission\. This AWS end user \(SCEndUser\) requires you to first create an AWS role \(such as SnowEndUser\) with the required IAM permissions\. The AWS end user will assume the AWS role\. To perform this task, you need IAM permissions to create new users\. 
 
  If you are upgrading from an earlier version of the Connector, note that the **ServiceCatalogServiceNowAdditionalPermissions** AWS policy is no longer needed for the Connector for ServiceNow\. Proceed to the **Create a SnowEndUser** role step\. 
 
 **To create AWS Service Catalog end user**
 
-1.  Go to [Create a role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)\. Following the instructions there, create a role for the ServiceNow end user to assume \(such as SnowEndUser\)\. 
+1.  You need to first create the AWS role \(such as SnowEndUser\)\. Go to [Create a role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)\. 
 
     For products using AWS CloudFormation StackSets, you need to create a StackSet inline policy\. With AWS CloudFormation StackSets, you are able to create products that are deployed across multiple accounts and regions\. Using an administrator account, you define and manage an AWS Service Catalog product, and use it as the basis for provisioning stacks into selected target accounts across specified regions\. You need to have the necessary permissions defined in your AWS accounts\. 
 
@@ -89,9 +89,9 @@ The **ServiceCatalogAdminReadOnlyAccess** policy was deprecated\. If you are usi
        }
    ```
 **Note**  
-Replace **123456789123** with your account information\. The [Connector for ServiceNow v2\.3\.3 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.3+-AWS_Configurations_final.json) and [Connector for ServiceNow v2\.3\.3 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.3+-AWS_Configurations_GovCloud_final.json) files include the stack set permissions\.
+Replace **123456789123** with your account information\. The [Connector for ServiceNow v2\.3\.4 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.4+-AWS_Configurations_final.json) and [Connector for ServiceNow v2\.3\.4 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.4+-AWS_Configurations_GovCloud_final.json) files include the stack set permissions\.
 
-1. Add the following permissions \(policies\) to the role:
+1. Add the following permissions \(policies\) to the SnowEndUser role:
    + **AWSServiceCatalogEndUserFullAccess** \- Note: The **ServiceCatalogEndUserFullAccess** policy was deprecated\. If you are using a current version of the Connector for ServiceNow, update the SCSyncUser with the correct AWS managed policy\.
    + **StackSet \(inline policy\)**
    + **AmazonEC2ReadOnlyAccess**

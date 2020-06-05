@@ -41,7 +41,7 @@ The AWS configuration design requires each AWS Service Catalog product to have e
 
 1.  Choose **Submit**\. 
 
-    Note that the [Connector for Jira Service Desk v1\.0\.4 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForJSD1.0.4-AWS_Configurations_final.json) and [Connector for Jira Service Desk v1\.0\.4 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForJSDv1.0.4+-AWS_Configurations_GovCloudv_final.json) templates create the permissions as well as the outputs needed for stack set constraints\. Example stack set outputs: 
+    Note that the [Connector for Jira Service Desk v1\.5\.0 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForJSDv1.5.0+-AWS_Configurations_Commercial_final.yml) and [Connector for Jira Service Desk v1\.5\.0 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForJSDv1.5.0+-AWS_Configurations_GovCloud_final.json) templates create the permissions as well as the outputs needed for stack set constraints\. Example stack set outputs: 
 
    ```
                        SCStackSetAdministratorRoleARN 

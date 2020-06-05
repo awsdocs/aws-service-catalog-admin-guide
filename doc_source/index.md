@@ -1,7 +1,7 @@
 # AWS Service Catalog Administrator Guide
 
 -----
-*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2020 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -16,7 +16,7 @@ Amazon's trademarks and trade dress may not be used in
 ## Contents
 + [What Is AWS Service Catalog?](introduction.md)
    + [Overview of AWS Service Catalog](what-is_concepts.md)
-   + [AWS Service Catalog Default Service Limits](limits.md)
+   + [AWS Service Catalog default service quotas](limits.md)
 + [Setting Up for AWS Service Catalog](setup.md)
    + [Grant Permissions to AWS Service Catalog Administrators](getstarted-iamadmin.md)
    + [Grant Permissions to AWS Service Catalog End Users](getstarted-iamenduser.md)
@@ -29,6 +29,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Step 6: Add a Launch Constraint to Assign an IAM Role](getstarted-launchconstraint.md)
    + [Step 7: Grant End Users Access to the Portfolio](getstarted-deploy.md)
    + [Step 8: Test the End User Experience](getstarted-verify.md)
++ [Getting Started Library](getting-started-library.md)
 + [Security in AWS Service Catalog](security.md)
    + [Data Protection in AWS Service Catalog](data-protection.md)
    + [Identity and Access Management in AWS Service Catalog](controlling_access.md)
@@ -49,15 +50,16 @@ Amazon's trademarks and trade dress may not be used in
       + [Adding Products to Portfolios](catalogs_portfolios_adding-products.md)
       + [Updating Products](productmgmt-update.md)
       + [Deleting Products](productmgmt-delete.md)
+      + [Managing Versions](managing-versions.md)
    + [Using AWS Service Catalog Constraints](constraints.md)
       + [AWS Service Catalog Launch Constraints](constraints-launch.md)
       + [AWS Service Catalog Notification Constraints](constraints-notification.md)
-      + [AWS Service Catalog Resource Update Constraints](constraints-resourceupdate.md)
+      + [AWS Service Catalog Tag Update Constraints](constraints-resourceupdate.md)
       + [AWS Service Catalog Stack Set Constraints](constraints-stackset.md)
       + [AWS Service Catalog Template Constraints](catalogs_constraints_template-constraints.md)
          + [Template Constraint Rules](reference-template_constraint_rules.md)
          + [AWS Service Catalog Rule Functions](intrinsic-function-reference-rules.md)
-   + [AWS Service Catalog Self-Service Actions](using-service-actions.md)
+   + [AWS Service Catalog Service Actions](using-service-actions.md)
    + [Adding AWS Marketplace Products to Your Portfolio](catalogs_marketplace-products.md)
    + [Portfolio Sharing](catalogs_portfolios_sharing.md)
    + [Using AWS CloudFormation StackSets](using-stacksets.md)
@@ -85,10 +87,11 @@ Amazon's trademarks and trade dress may not be used in
       + [Validating Configurations](validate-configurations.md)
       + [ServiceNow Additional Administrator Features](additional-configurations.md)
       + [Upgrade Instructions](upgrade-instructions.md)
-   + [AWS Service Catalog Connector for Jira Service Desk](integrations-jiraservicedesk.md)
+   + [AWS Service Management Connector for Jira Service Desk](integrations-jiraservicedesk.md)
       + [Baseline Permissions](jsd-integration-baseline-permissions.md)
       + [Configuring AWS Service Catalog](jsd-integration-configure-sc.md)
       + [Configuring Jira Service Desk](jsd-integration-configure-jsd.md)
-         + [Validating Configurations](jsd-validate-configurations.md)
-         + [Jira Additional Administrator Features](jsd-admin-features.md)
+      + [IT Lifecycle Management Setup and Use Case](jsd-it-lifecycle.md)
+      + [Validating Configurations](jsd-validate-configurations.md)
+      + [Jira Additional Administrator Features](jsd-admin-features.md)
 + [Document History](history.md)

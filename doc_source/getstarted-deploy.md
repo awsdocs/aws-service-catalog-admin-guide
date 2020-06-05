@@ -7,10 +7,10 @@ If you haven't created an IAM group for the endusers, see [Grant Permissions to 
 
 **To provide access to the portfolio**
 
-1. On the portfolio details page, expand the **Users, groups and roles** section\.
+1. On the portfolio details page, choose the **Groups, roles, and users** tab\.
 
-1. Choose **Add user, group or role**\.
+1. Choose **Add groups, roles, users**\.
 
-1. On the **Groups** tab, select the checkbox for the IAM group for the endusers\.
+1. On the **Groups** tab, select the checkbox for the IAM group for the end users\.
 
 1. Choose **Add Access**\.

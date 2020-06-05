@@ -19,7 +19,7 @@ To control how users are able to use products, add constraints\. For more inform
    + **Notification** – The Amazon SNS topic specified to receive notifications\. For more information, see [AWS Service Catalog Notification Constraints](constraints-notification.md)\.
    + **Template** – A JSON–formatted text file that contains one or more rules\. Rules are added to the AWS CloudFormation template used by the product\. For more information, see [Template Constraint Rules](reference-template_constraint_rules.md)\.
    + **Stack Set** – Uses AWS CloudFormation StackSets to specify multiple accounts and regions for the AWS Service Catalog product launch\. For more information, see [AWS Service Catalog Stack Set Constraints](constraints-stackset.md)\.
-   + **Tag Update** – Allows you to update tags after the product has been provisioned\. For more information, see [AWS Service Catalog Resource Update Constraints](constraints-resourceupdate.md)\.
+   + **Tag Update** – Allows you to update tags after the product has been provisioned\. For more information, see [AWS Service Catalog Tag Update Constraints](constraints-resourceupdate.md)\.
 
 1.  Choose **Continue**\.
 

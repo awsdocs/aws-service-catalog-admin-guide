@@ -10,6 +10,7 @@ New versions of products are propagated to all users who have access to the prod
 + [Adding Products to Portfolios](catalogs_portfolios_adding-products.md)
 + [Updating Products](productmgmt-update.md)
 + [Deleting Products](productmgmt-delete.md)
++ [Managing Versions](managing-versions.md)
 
 ## Viewing the Products Page<a name="productmgmt-menu"></a>
 

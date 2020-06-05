@@ -28,6 +28,7 @@
    + **Select template** – An AWS CloudFormation template from a local drive or a URL that points to a template stored in Amazon S3\. If you specify an Amazon S3 URL, it must begin with `https://`\. The extension for the template file must be `.template`\.
    + **Version title** – the name of the product version \(e\.g\., "v1", "v2beta"\)\. No spaces are allowed\. 
    + **Description** \(optional\) – A description of the product version including how this version differs from the previous version\. 
+   + **Guidance** – By default, product versions don't have any guidance, so end users can use that version to update and launch provisioned products\. If you set the guidance to deprecated, users can make updates to a provisioned product but can't launch new provisioned products of that version\.
 
 1.  Choose **Next**\.
 

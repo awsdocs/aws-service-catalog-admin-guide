@@ -1,32 +1,37 @@
 # Baseline Permissions<a name="jsd-integration-baseline-permissions"></a>
 
- This section provides instructions on how to set up the baseline AWS users and permissions needed for the AWS Service Catalog Connector for Jira Service Desk\. For each AWS account, the Connector for Jira Service Desk requires two IAM users and three roles: 
-+ **AWS Service Catalog Sync User**: IAM user to sync AWS portfolios and products to Jira Service Desk catalog items \(**AWSServiceCatalogAdminReadOnlyAccess** managed policy\)\.
-+ **AWS Service Catalog End User**: Enables the Connector for Jira Service Desk to provision AWS products\.
-+ **SCConnect Launch role**: IAM role used to place baseline AWS service permissions into the AWS Service Catalog launch constraints\. Configuring this role enables segregation of duty through provisioning product resources on behalf of the Jira Service Desk end user\. The SCConnectLaunch role baseline contains permissions to Amazon EC2 and Amazon S3 services\. If your products contain more AWS services, you must either include those services in the SCConnectLaunch role or create new launch roles\.
+ This section provides instructions on how to set up the baseline AWS users and permissions needed for the AWS Service Management Connector for Jira Service Desk\. For each AWS account, the Connector for Jira Service Desk requires two sets of an access key identifier and a secret key for API access\. These correspond to users in AWS Identity and Access Management \(IAM\)\. Specifically, you should set up:
++ An IAM user to sync AWS resources to Jira Service Desk\.
++ An IAM user able to perform end user functionality to provision and execute requests exposed through Jira Service Desk, including assuming any roles required to perform the provisioning and execution \(launch roles are recommended for AWS Service Catalog\)\.
+
+ These can be the same user and can be an existing user, but in line with the best practice to give minimal permissions it is recommended these be two new users for Connector\. 
+
+ Full details of the permissions required by these users is included below, with an AWS CloudFormation template to facilitate setting this up\. Baseline permissions enable an end user to provision the following AWS services: Amazon Simple Storage Service and Amazon Elastic Compute Cloud\. To allow end users to provision AWS services beyond the baseline permissions, you must include the additional AWS service permissions to the appropriate roles\. 
 
 **Note**  
- To use an AWS CloudFormation template to set up the AWS configurations of the Connector for Jira Service Desk, see the two JSON AWS Configurations for [Connector for Jira Service Desk v1\.0\.4 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForJSD1.0.4-AWS_Configurations_final.json) and [Connector for Jira Service Desk v1\.0\.4 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForJSDv1.0.4+-AWS_Configurations_GovCloudv_final.json)\.
+ To use an AWS CloudFormation template to set up the AWS configurations of the Connector for Jira Service Desk, see the two JSON AWS Configurations for [Connector for Jira Service Desk v1\.5\.0 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForJSDv1.5.0+-AWS_Configurations_Commercial_final.yml) and [Connector for Jira Service Desk v1\.5\.0 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForJSDv1.5.0+-AWS_Configurations_GovCloud_final.json)\.
 
-## Creating AWS Service Catalog Sync User<a name="jsd-creating-sc-sync-user"></a>
+## Creating AWS Service Management Connector Sync User<a name="jsd-creating-sc-sync-user"></a>
 
- The following section describes how to create the AWS Service Catalog sync user and associate the appropriate IAM permissions\. To perform this task, you need IAM permissions to create new users\. 
+ The following section describes how to create the AWS Connector sync user and associate the appropriate IAM permissions\. To perform this task, you need IAM permissions to create new users\. 
 
-**To create AWS Service Catalog sync user**
+**To create AWS Service Management Connector sync user**
 
 1. Go to [Creating an IAM User in Your AWS Account](https://https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\. Following the instructions there, create a sync user \(that is, SCSyncUser\)\. The user needs programmatic and AWS Management Console access to follow the Connector for Jira Service Desk installation instructions\.
 
-1.  Set permissions for your sync user \(SCSyncUser\)\. Choose **Attach existing policies directly** and select the ****AWSServiceCatalogAdminReadOnlyAccess**** policy\. 
+1.  Set permissions for your sync user \(SCSyncUser\)\. Choose **Attach existing policies directly** and select the ****AWSServiceCatalogAdminReadOnlyAccess**** policy and the **AmazonSSMReadOnlyAccess ** policy\. 
+
+1.  Also add a policy allowing **budgets:ViewBudget** on all resources \(\*\)\. 
 
 1.  Review and choose **Create User**\. 
 
 1. Note the access and secret access information\. Download the \.csv file that contains the user credential information\.
 
-## Creating AWS Service Catalog End User<a name="jsd-creating-sc-end-user"></a>
+## Creating AWS Service Management Connector End User<a name="jsd-creating-sc-end-user"></a>
 
- The following section describes how to create the AWS Service Catalog end user and associate the appropriate IAM permissions\. To perform this task, you need IAM permissions to create new users\. 
+ The following section describes how to create the AWS Service Management Connector end user and associate the appropriate IAM permissions\. To perform this task, you need IAM permissions to create new users\. 
 
-**To create AWS Service Catalog end user**
+**To create AWS Service Management Connector end user**
 
 1. Go to [Creating an IAM User in Your AWS Account](https://https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\. Following the instructions there, create a user \(such as SCEndUser\)\. The user needs programmatic and AWS Management Console access to follow the Connector for Jira Service Desk installation instructions\.
 
@@ -61,15 +66,18 @@
    }
    ```
 **Note**  
- The [Connector for Jira Service Desk v1\.0\.4 \- AWS Commercial Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForJSD1.0.4-AWS_Configurations_final.json) and [Connector for Jira Service Desk v1\.0\.4 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForJSDv1.0.4+-AWS_Configurations_GovCloudv_final.json) templates include the AWS CloudFormation StackSet permissions\. 
+ The [Connector for Jira Service Desk v1\.5\.0 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForJSDv1.5.0+-AWS_Configurations_Commercial_final.yml) and [Connector for Jira Service Desk v1\.5\.0 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForJSDv1.5.0+-AWS_Configurations_GovCloud_final.json) templates include the AWS CloudFormation StackSet permissions\. 
 
 1.  Add the following permissions \(policies\) to the user **SCEndUser**: 
    + **AWSServiceCatalogEndUserFullAccess** \- \(AWS managed policy\)
    + StackSet \- \(inline policy\)
    + AmazonS3ReadOnlyAccess
    + AmazonEC2ReadOnlyAccess
+   + AWSConfigUserAccess
 **Note**  
  For AWS Service Catalog products with AWS CloudFormation StackSets, you need to include the read only permissions for the services you want to provision\. For example, to provision an Amazon S3 bucket, include the **AmazonS3ReadOnlyAccess** policy to the **SCEndUser** role\. 
+
+1. Also add a policy allowing the following on all resources \(\*\): **ssm:DescribeAutomationExecutions**, **ssm:DescribeDocument**, and ssm:**StartAutomationExecution**\. 
 
 1.  Review and choose **Create User**\. 
 
@@ -168,4 +176,4 @@
    + **ServiceCatalogSSMActionsBaseline** \(custom managed policy\)
 
 **Note**  
- To use an AWS CloudFormation template to set up the AWS configurations of the Connector for Jira Service Desk, see the two JSON AWS Configurations for [Connector for Jira Service Desk v1\.0\.4 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForJSD1.0.4-AWS_Configurations_final.json) and [Connector for Jira Service Desk v1\.0\.4 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForJSDv1.0.4+-AWS_Configurations_GovCloudv_final.json)\.
+ To use an AWS CloudFormation template to set up the AWS configurations of the Connector for Jira Service Desk, see the two JSON AWS Configurations for [Connector for Jira Service Desk v1\.5\.0 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForJSDv1.5.0+-AWS_Configurations_Commercial_final.yml) and [Connector for Jira Service Desk v1\.5\.0 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForJSDv1.5.0+-AWS_Configurations_GovCloud_final.json)\.

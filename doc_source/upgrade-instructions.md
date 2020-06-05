@@ -30,9 +30,9 @@ Make sure you are installing the update set in a non\-production/sandbox environ
 
 1.  Choose **User Criteria Scoped API** and then choose **Activate**\. 
 
-1.  Download the **Connector for ServiceNow update set** from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/f0b117a3db32320093a7d7a0cf961912/)\. For users installing the update set on a ServiceNow Personal Developer Instance \(PDI\), download the code from [Connector for ServiceNow version 2\.3\.3 update set\.](https://servicecatalogconnector.s3.amazonaws.com/AWS_SC_update_set_2.3.3.xml) 
+1.  Download the **Connector for ServiceNow update set** from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/f0b117a3db32320093a7d7a0cf961912/)\. For users installing the update set on a ServiceNow Personal Developer Instance \(PDI\), download the code from [Connector for ServiceNow version 2\.3\.4 update set\.](https://servicecatalogconnector.s3.amazonaws.com/AWS_SC_update_set_2.3.4.xml) 
 
-    The Connector for ServiceNow version 2\.3\.3 update set may be applied to a “London,” “Madrid,” or "New York" platform release of ServiceNow\. 
+    The Connector for ServiceNow version 2\.3\.4 update set may be applied to a “Madrid,” "New York," or "Orlando" platform release of ServiceNow\. 
 
 1.  From your ServiceNow dashboard, type **update sets** in the navigation panel in the upper left\. 
 

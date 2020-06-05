@@ -4,4 +4,4 @@ AWS Service Catalog is integrated with a number of AWS services and partner prod
 
 **Topics**
 + [AWS Service Catalog Connector for ServiceNow](integrations-servicenow.md)
-+ [AWS Service Catalog Connector for Jira Service Desk](integrations-jiraservicedesk.md)
++ [AWS Service Management Connector for Jira Service Desk](integrations-jiraservicedesk.md)
