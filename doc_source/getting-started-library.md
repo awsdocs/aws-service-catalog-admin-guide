@@ -39,4 +39,4 @@
  Our **High Reliability Architectures** portfolio is a repository of well\-architected, multi\-region blueprints\. Each blueprint provides prescriptive implementation guidance for AWS services commonly used to build multi\-region workloads\. Examples include patterns for managing infrastructure changes and data storage backup and recovery for user identity, key\-value, and object data across multiple regions\. 
 
 ## Learn More<a name="getting-started-library-learn-more"></a>
-+ For more information about the well\-architected framework, see [AWS Well\-Architected](aws.amazon.comarchitecture/well-architected/)\.
++ For more information about the well\-architected framework, see [AWS Well\-Architected](https://docs.aws.amazon.com/wellarchitected/latest/framework)\.
