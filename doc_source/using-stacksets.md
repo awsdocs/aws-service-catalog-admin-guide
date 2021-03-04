@@ -7,7 +7,7 @@ You can use AWS CloudFormation StackSets to launch AWS Service Catalog products 
 
 ## Stack sets vs\. stack instances<a name="stacksets-vs-stack-instances"></a>
 
-A *stack* lets you create stacks in AWS accounts across regions by using a single AWS CloudFormation template\.
+A *stack set* lets you create stacks in AWS accounts across regions by using a single AWS CloudFormation template\.
 
 A *stack instance* refers to a stack in a target account within a region and is associated with only one stack set\.
 
