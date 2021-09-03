@@ -40,18 +40,7 @@ A rule can include a `RuleCondition` property and must include an `Assertions` p
 
 The pseudo template shows a `Rules` section containing two rules named `Rule01` and `Rule02`\. `Rule01` includes a rule condition and two assertions\. If the function in the rule condition evaluates to true, both functions in each assert are evaluated and applied\. If the rule condition is false, the rule doesn't take effect\. `Rule02` always takes effect because it doesn't have a rule condition, which means the one assert is always evaluated and applied\.
 
-You can use the following rule\-specific intrinsic functions to define rule conditions and assertions:
-+ `Fn::And`
-+ `Fn::Contains`
-+ `Fn::EachMemberEquals`
-+ `Fn::EachMemberIn`
-+ `Fn::Equals`
-+ `Fn::If`
-+ `Fn::Not`
-+ `Fn::Or`
-+ `Fn::RefAll`
-+ `Fn::ValueOf`
-+ `Fn::ValueOfAll`
+For information on rule\-specific intrinsic functions to define rule conditions and assertions, see [AWS Rule Functions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-rules.html) in the *AWS CloudFormation User Guide*\.
 
 ## Example: Conditionally Verify a Parameter Value<a name="template-constraint-rules-example"></a>
 

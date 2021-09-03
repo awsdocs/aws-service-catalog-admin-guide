@@ -1,23 +1,27 @@
 # Document History<a name="history"></a>
 
-The following table describes important additions to the AWS Service Catalog documentation\.
+This table describes important additions to the AWS Service Catalog documentation\.
 
 
-| Feature | Description | Release Date | 
+| Feature | Description | Release date | 
 | --- | --- | --- | 
-| AWS Service Quotas | To learn about how AWS Service Catalog works with AWS Service Quotas, see [AWS Service Catalog default service quotas](limits.md)\. | March 24, 2020 | 
-| Getting Started Library | To learn about the library of well\-architected product templates offered by AWS Service Catalog, see [Getting Started Library](getting-started-library.md)\. | March 10, 2020 | 
-| Version Guidance | To learn about product version guidance, see [Version Guidance](managing-versions.md#version-guidance)\. | December 17, 2019 | 
-| Connector for Jira Service Desk | To begin using the Connector for Jira Service Desk, see [AWS Service Management Connector for Jira Service Desk](integrations-jiraservicedesk.md)\. | November 21, 2019 | 
-| New Version of Connector for ServiceNow | To learn about the updates to the Connector for ServiceNow, see [AWS Service Catalog Connector for ServiceNow](integrations-servicenow.md)\. | November 18, 2019 | 
-| New Security Chapter | To learn about security in AWS Service Catalog, see [Security in AWS Service Catalog](security.md)\. | October 31, 2019 | 
-| Changing Provisioned Product Owner | To learn about how to change the owner of provisioned products, see [Changing Provisioned Product Owner](change-pp-owner.md)\. | October 31, 2019 | 
-| New Resource Update Constraint | To learn about how to use the RESOURCE\_UPDATE constraint to update tags in provisioned products, see [AWS Service Catalog Tag Update Constraints](constraints-resourceupdate.md)\. | April 17, 2019 | 
-| Connector for ServiceNow | To begin using the Connector for ServiceNow, see [AWS Service Catalog Connector for ServiceNow](integrations-servicenow.md)\. | March 19, 2019 | 
-| Support for AWS CloudFormation StackSets | To begin using AWS CloudFormation StackSets, see [Using AWS CloudFormation StackSets](using-stacksets.md)\. | November 14, 2018 | 
-| Self\-service actions | To begin using self\-service actions, see [AWS Service Catalog Service Actions](using-service-actions.md)\. | October 17, 2018 | 
-| CloudWatch metrics | To learn about CloudWatch metrics, see [AWS Service Catalog CloudWatch Metrics](cloudwatch-metrics.md)\. | September 26, 2018 | 
-| Support for TagOptions | To manage tags, see [AWS Service Catalog TagOption Library](tagoptions.md)\. | June 28, 2017 | 
-| Importing a portfolio | To import a portfolio shared from another AWS account, see [Importing a Portfolio](catalogs_portfolios_sharing.md#catalogs_portfolios_sharing_importing)\. | February 16, 2016 | 
-| Updates to permissions information | To grant access to the end user console view, see [Console Access for End Users](controlling_access.md#permissions-end-users-console)\. | February 16, 2016 | 
-|  Initial release  |  This is the initial release of the *AWS Service Catalog Administrator Guide*\.  |  July 9, 2015  | 
+|  AWS Service Catalog managed policies  |  Updates to these managed policies: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/history.html) To learn more about these managed polcies, see [Managed policies](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/managed-policies.html) in the *AWS Service Catalog Administrator Guide*\.  |  August 24, 2021  | 
+|  Connector for Jira Service Management  | To learn about the updates to the Connector for Jira Service Management, see [ AWS Service Management Connector for Jira Service Management\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/integrations-jiraservicedesk.html) | May 25, 2021 | 
+|  Connector for ServiceNow  |  To learn about the updates to the Connector for ServiceNow, see [AWS Service Management Connector for ServiceNow\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/integrations-servicenow.html)  |  April 7, 2021  | 
+| Connector for ServiceNow |  To learn about the updates to the Connector for ServiceNow, see [AWS Service Management Connector for ServiceNow\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/integrations-servicenow.html)  | September 24, 2020 | 
+| AWS Service Quotas | To learn about how AWS Service Catalog works with AWS Service Quotas, see [AWS Service Catalog default service quotas\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/limits.html) | March 24, 2020 | 
+| Getting Started Library | To learn about the library of well\-architected product templates offered by AWS Service Catalog, see [Getting Started Library](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/getting-started-library.html) | March 10, 2020 | 
+| Version guidance | To learn about product version guidance, see [Version Guidance](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/managing-versions.html#version-guidance)\. | December 17, 2019 | 
+| Connector for Jira Service Desk | To begin using the Connector for Jira Service Desk, see [ AWS Service Management Connector for Jira Service Desk\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/integrations-jiraservicedesk.html) | November 21, 2019 | 
+| Connector for ServiceNow | To learn about the updates to the Connector for ServiceNow, see [AWS Service Management Connector for ServiceNow\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/integrations-servicenow.html) | November 18, 2019 | 
+| New security chapter | To learn about security in AWS Service Catalog, see [Security in AWS Service Catalog\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/security.html) | October 31, 2019 | 
+| Changing provisioned product owner | To learn about how to change the owner of provisioned products, see [Changing Provisioned Product Owner\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/change-pp-owner.html) | October 31, 2019 | 
+| New resource update constraint | To learn about how to use the RESOURCE\_UPDATE constraint to update tags in provisioned products, see [AWS Service Catalog Tag Update Constraints\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/constraints-resourceupdate.html) | April 17, 2019 | 
+| Connector for ServiceNow | To begin using the Connector for ServiceNow, see [AWS Service Management Connector for ServiceNow\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/integrations-servicenow.html) | March 19, 2019 | 
+| Support for AWS CloudFormation StackSets | To begin using AWS CloudFormation StackSets, see [Using AWS CloudFormation StackSets\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/using-stacksets.html) | November 14, 2018 | 
+| Self\-service actions | To begin using self\-service actions, see [AWS Service Catalog Service Actions\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/using-service-actions.html) | October 17, 2018 | 
+| Amazon CloudWatch metrics | To learn about Amazon CloudWatch metrics, see [AWS Service Catalog Amazon CloudWatch\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/cloudwatch-metrics.html) | September 26, 2018 | 
+| Support for TagOptions | To manage tags, see [AWS Service Catalog TagOption Library\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/tagoptions.html) | June 28, 2017 | 
+| Importing a portfolio | To import a portfolio that is shared from another AWS account, see [Importing a Portfolio\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/catalogs_portfolios_sharing_how-to-share.html#catalogs_portfolios_sharing_importing) | February 16, 2016 | 
+| Updates to permissions information | To grant access to the end user console view, see [Console access for end users\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/controlling_access.html#permissions-end-users-console) | February 16, 2016 | 
+| Initial release | This is the initial release of the AWS Service Catalog Administrator Guide\. | July 9, 2015 | 

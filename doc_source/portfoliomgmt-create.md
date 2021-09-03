@@ -4,7 +4,7 @@ Use the **Portfolios** page to create and delete portfolios\. Deleting a portfol
 
 **To create a new portfolio**
 
-1. Navigate to the **Portfolios** page\.
+1. In the left navigation menu, choose **Portfolios**\.
 
 1. Choose **Create portfolio**\. 
 
@@ -14,10 +14,12 @@ Use the **Portfolios** page to create and delete portfolios\. Deleting a portfol
 
 **To delete a portfolio**
 
-1. Navigate to the **Portfolios** page\.
+1. In the left navigation menu, choose **Portfolios**\.
 
-1. Select the portfolio by clicking the corresponding radio button or anywhere on the listing except on the portfolio title\. 
+1. Select the portfolio you want to delete\.
 
-1. Choose **Delete portfolio**\.
+1. Choose **Actions**, **Delete**\. 
 
-1. Choose **Continue**\. 
+   A confirmation message appears\. 
+
+1. Choose **Delete** to confirm\.

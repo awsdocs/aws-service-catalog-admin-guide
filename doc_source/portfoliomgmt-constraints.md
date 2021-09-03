@@ -15,11 +15,16 @@ To control how users are able to use products, add constraints\. For more inform
 1. For **Product**, select the product to which to apply the constraint\.
 
 1. For **Constraint type**, choose one of the following options:
-   + **Launch** – The IAM role that AWS Service Catalog uses to launch and manage the product\. For more information, see [AWS Service Catalog Launch Constraints](constraints-launch.md)\.
-   + **Notification** – The Amazon SNS topic specified to receive notifications\. For more information, see [AWS Service Catalog Notification Constraints](constraints-notification.md)\.
-   + **Template** – A JSON–formatted text file that contains one or more rules\. Rules are added to the AWS CloudFormation template used by the product\. For more information, see [Template Constraint Rules](reference-template_constraint_rules.md)\.
-   + **Stack Set** – Uses AWS CloudFormation StackSets to specify multiple accounts and regions for the AWS Service Catalog product launch\. For more information, see [AWS Service Catalog Stack Set Constraints](constraints-stackset.md)\.
-   + **Tag Update** – Allows you to update tags after the product has been provisioned\. For more information, see [AWS Service Catalog Tag Update Constraints](constraints-resourceupdate.md)\.
+
+   **Launch** – The IAM role that AWS Service Catalog uses to launch and manage the product\. For more information, see [AWS Service Catalog Launch Constraints](constraints-launch.md)\.
+
+   **Notification** – The Amazon SNS topic specified to receive notifications\. For more information, see [AWS Service Catalog Notification Constraints](constraints-notification.md)\.
+
+   **Template** – A JSON–formatted text file that contains one or more rules\. Rules are added to the AWS CloudFormation template used by the product\. For more information, see [Template Constraint Rules](reference-template_constraint_rules.md)\.
+
+    **Stack Set** – Uses AWS CloudFormation StackSets to specify multiple accounts and AWS Regions for the AWS Service Catalog product launch\. For more information, see [AWS Service Catalog Stack Set Constraints](constraints-stackset.md)\.
+
+   **Tag Update** – Allows you to update tags after the product has been provisioned\. For more information, see [ AWS Service Catalog Tag Update Constraints\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/constraints-resourceupdate.html)
 
 1.  Choose **Continue**\.
 

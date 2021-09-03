@@ -26,7 +26,7 @@ The `AWS/ServiceCatalog` namespace includes the following metrics\.
 
 ### Dimensions for AWS Service Catalog Metrics<a name="service-catalog-metrics-dimensions"></a>
 
-AWS Service Catalog sends the following dimensions to CloudWatch\.
+AWS Service Catalog sends the following dimensions to Amazon CloudWatch\.
 
 
 | Dimension | Description | 

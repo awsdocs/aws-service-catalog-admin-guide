@@ -132,7 +132,7 @@ The service action execution was throttled by the backend service, such as SSM\.
 
  **Access denied while assuming the role**
 
- AWS Service Catalog was unable to assume the role specified in the service action definition\. Make sure that the *servicecatalog\.amazonaws\.com* principal, or a regional principal such as *servicecatalog\.us\-east\-1\.amazonaws\.com*, is whitelisted in the role's trust policy\. 
+ AWS Service Catalog was unable to assume the role specified in the service action definition\. Make sure that the *servicecatalog\.amazonaws\.com* principal, or a regional principal such as *servicecatalog\.us\-east\-1\.amazonaws\.com*, is allowlisted in the role's trust policy\. 
 
  **An error occurred \(AccessDeniedException\) when calling the StartAutomationExecution operation: User is not authorized to perform: ssm:StartAutomationExecution on the resource\.**
 

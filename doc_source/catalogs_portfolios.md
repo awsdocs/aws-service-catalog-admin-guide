@@ -9,6 +9,8 @@ You create, view, and update portfolios on the **Portfolios** page in the AWS Se
 + [Adding Products](portfoliomgmt-products.md)
 + [Adding Constraints](portfoliomgmt-constraints.md)
 + [Granting Access to Users](catalogs_portfolios_users.md)
++ [Sharing a Portfolio](catalogs_portfolios_sharing_how-to-share.md)
++ [Sharing and Importing Portfolios](catalogs_portfolios_sharing.md)
 
 ## Creating, Viewing, and Deleting Portfolios<a name="portfoliomgmt-menu"></a>
 

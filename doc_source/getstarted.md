@@ -3,7 +3,7 @@
 This tutorial introduces you to the key tasks that you do as a catalog administrator\. You create a product that is based on an AWS CloudFormation template, which defines the AWS resources used by the product\. The product, Linux Desktop, is a cloud development environment that runs on Amazon Linux\. You add the product to a portfolio and distribute it to the end user\. Finally, you log in as the end user to test the product\.
 
 **Before You Begin**  
-Complete the tasks described in [Setting Up for AWS Service Catalog](setup.md)\.
+Complete the tasks described in [Setting Up AWS Service Catalog](setup.md)\.
 
 **Topics**
 + [Step 1: Download the AWS CloudFormation Template](getstarted-template.md)

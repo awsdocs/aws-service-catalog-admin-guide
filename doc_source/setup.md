@@ -1,4 +1,4 @@
-# Setting Up for AWS Service Catalog<a name="setup"></a>
+# Setting Up AWS Service Catalog<a name="setup"></a>
 
 Before you get started with AWS Service Catalog, complete the following tasks\.
 

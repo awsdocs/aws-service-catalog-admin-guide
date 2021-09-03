@@ -2,22 +2,29 @@
 
 You can identify the user who provisioned a product and resources associated with the product using the AWS Service Catalog console\. This tutorial helps translate this example to your own specific provisioned products\. 
 
-To manage all provisioned products for the account, you need **AWSServiceCatalogAdminFullAccess** or equivalent access to the provisioned product write operations\. For more information, see [Identity and Access Management in AWS Service Catalog](controlling_access.md)\.
+To manage all provisioned products for the account, you need `AWSServiceCatalogAdminFullAccess` or equivalent access to the provisioned product write operations\. For more information, see [ Identity and Access Management](https://docs.aws.amazon.com/https://docs.aws.amazon.com/servicecatalog/latest/adminguide/controlling_access.html) in the *AWS Service Catalog Administrator Guide\.*
 
 **To identify the user who provisioned a product and the associated resources**
 
-1. Navigate to the provisioned products console in AWS Service Catalog console\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/ppwt1.png)
+1. Open [https://console\.aws\.amazon\.com/servicecatalog](https://console.aws.amazon.com/servicecatalog)\.
 
-1. In the **Provisioned products** pane, for **View**:, choose **Account**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/ppwt2.png)
+1. In the left navigation menu, choose **Provisioned product**\.
 
-1. Identify the provisioned product to investigate, and select the provisioned product\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/ppwt3.png)
+1. In the **Access Filter** dropdown menu, choose **Account**\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/access-filter-dropdown.png)
 
-1. Expand the **Events** section and note the **Provisioned product ID** and **CloudformationStackARN** values\.
+1. In the **Account** view, choose and open a provisioned product to display its details\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/account-view.png)
 
-1. Use the provisioned product ID to identify the CloudTrail record that corresponds to this launch and identify the requesting user \(typically, this is entered as an email address during federation\)\. In this example, it is "steve"\.
+   You can see the details of the provisioned product\.
+
+     
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/details-pp.png)
+
+1. Scroll down to expand the **Events** section\. Note the `Provisioned product ID` and `CloudformationStackARN` values\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/events-container.png)
+
+1. Use the provisioned product ID to identify the AWS CloudTrail record that corresponds to this launch and identify the requesting user \(typically, you enter an email address during federation\)\. In this example, it is "steve"\.
 
    ```
    {
@@ -86,7 +93,6 @@ To manage all provisioned products for the account, you need **AWSServiceCatalog
    }
    ```
 
-1. Use the `CloudformationStackARN` value to identify AWS CloudFormation events to find information about resources created\. You can also use the AWS CloudFormation API to obtain this information\. For more information, see [AWS CloudFormation API Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/)\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/ppwt5.png)
+1. Use the `CloudformationStackARN` value to identify AWS CloudFormation events to find information about the created resources\. You can also use the AWS CloudFormation API to obtain this information\. For more information, see [AWS CloudFormation API Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/)\.
 
-Note that you can perform steps 1 through 4 using the AWS Service Catalog API or the AWS CLI\. For more information, see [AWS Service Catalog Developer Guide](https://docs.aws.amazon.com/servicecatalog/latest/dg/) and [AWS Service Catalog Command Line Reference](https://docs.aws.amazon.com/cli/latest/reference/servicecatalog/)\.
+You can perform steps 1 through 4 using the AWS Service Catalog API or the AWS CLI\. For more information, see [ AWS Service Catalog Developer Guide\. ](https://docs.aws.amazon.com/servicecatalog/latest/dg/what-is-service-catalog.html) and [ AWS Service Catalog Command Line Reference\. ](https://docs.aws.amazon.com/cli/latest/reference/servicecatalog/)

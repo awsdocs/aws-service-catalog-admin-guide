@@ -2,7 +2,7 @@
 
 You can add AWS Marketplace products to your portfolios to make those products available to your AWS Service Catalog end users\.
 
-AWS Marketplace is an online store in which you can find, subscribe to, and immediately start using a large selection of software and services\. The types of products in AWS Marketplace include databases, application servers, testing tools, monitoring tools, content management tools, and business intelligence software\. AWS Marketplace is available at [https://aws.amazon.com/marketplace](https://aws.amazon.com/marketplace)\.
+AWS Marketplace is an online store in which you can find, subscribe to, and immediately start using a large selection of software and services\. The types of products in AWS Marketplace include databases, application servers, testing tools, monitoring tools, content management tools, and business intelligence software\. AWS Marketplace is available at [https://aws.amazon.com/marketplace](https://aws.amazon.com/marketplace)\. Note that you can't add software as a service \(SaaS\) products from AWS Marketplace to AWS Service Catalog\.
 
 You distribute an AWS Marketplace product to AWS Service Catalog end users by defining the product in an AWS CloudFormation template and adding the template to a portfolio\. Any end user who has access to the portfolio will be able to launch the product from the console\.
 
@@ -24,7 +24,7 @@ Complete the following steps to subscribe to an AWS Marketplace product, define 
 
 1. Choose **Continue** to view the fulfillment page, and then choose the **Manual Launch** tab\.
 
-   The information on the fulfillment page includes the supported Amazon Elastic Compute Cloud \(Amazon EC2\) instance types, the supported AWS regions, and the Amazon Machine Image \(AMI\) ID that the product uses for each AWS region\. Note that some choices will affect cost\. You will use this information to customize the AWS CloudFormation template in later steps\.
+   The information on the fulfillment page includes the supported Amazon Elastic Compute Cloud \(Amazon EC2\) instance types, the supported AWS Regions, and the Amazon Machine Image \(AMI\) ID that the product uses for each AWS region\. Note that some choices will affect cost\. You will use this information to customize the AWS CloudFormation template in later steps\.
 
 1. Choose **Accept Terms** to subscribe to the product\.
 
@@ -34,9 +34,9 @@ Complete the following steps to subscribe to an AWS Marketplace product, define 
 
 To complete the following steps, you will use one of the AWS CloudFormation sample templates as a starting point, and you will customize the template so that it represents your AWS Marketplace product\. To access the sample templates, see [Sample Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-sample-templates.html) in the *AWS CloudFormation User Guide*\.
 
-1. On the Sample Templates page in the* AWS CloudFormation User Guide*, choose a region that your product will be used in\. The region must be supported by your AWS Marketplace product\. You can view the supported regions on the product fulfillment page in AWS Marketplace\.
+1. On the Sample Templates page in the* AWS CloudFormation User Guide*, choose an AWS Region for your product\. The AWS Region must be supported by your AWS Marketplace product\. You can view the supported regions on the product fulfillment page in AWS Marketplace\.
 
-1. To view a list of service sample templates that are appropriate for the region, choose the **Services** link\. 
+1. To view a list of service sample templates that are appropriate for the Region, choose the **Services** link\. 
 
 1. You can use any of the samples that are appropriate for your needs as a starting point\. The steps in this procedure use the **Amazon EC2 instance in a security group** template\. To view the sample template, choose **View** , and then save a copy of the template locally so that you can edit it\. Your local file must have the `.template` extension\.
 
@@ -48,8 +48,8 @@ To complete the following steps, you will use one of the AWS CloudFormation samp
 
 1. Customize the `InstanceType` parameter so that it includes only EC2 instance types that are supported by your product\. If your template includes unsupported EC2 instance types, the product will fail to launch for your end users\.
 
-   1. On the product fulfillment page in AWS Marketplace, view the supported EC2 instance types in the **Pricing Details** section, as in the following example:  
-![\[The pricing details section on the product fulfillment page in AWS Marketplace shows the supported EC2 instance types.\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/sc-marketplace_instance_types-console.png)
+   1. On the product fulfillment page in AWS Marketplace, view the supported EC2 instance types in the **Pricing Details** section\.  
+![\[The pricing details section on the product fulfillment page in AWS Marketplace shows the supported EC2 instance types.\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/ec2-ondemand.png)
 
    1. In your template, change the default instance type to a supported EC2 instance type of your choice\.
 
@@ -98,16 +98,18 @@ To complete the following steps, you will use one of the AWS CloudFormation samp
    ,
    ```
 
-1. In the `Mappings` section of your template, edit the `AWSRegionArch2AMI` mappings to associate each AWS region with the corresponding architecture and AMI ID for your product\.
+1. In the `Mappings` section of your template, edit the `AWSRegionArch2AMI` mappings to associate each AWS Region with the corresponding architecture and AMI ID for your product\.
 
-   1. On the product fulfillment page in AWS Marketplace, view the AMI ID that your product uses for each AWS region, as in the following example:  
+   1. On the product fulfillment page in AWS Marketplace, view the AMI ID that your product uses for each AWS Region, as in the following example:
+
+         
 ![\[A table of regions and AMI IDs on the product fulfillment page in AWS Marketplace.\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/images/sc-marketplace_ami_ids-console.png)
 
-   1. In your template, remove the mappings for any regions that you do not support\.
+   1. In your template, remove the mappings for any AWS Regions that you do not support\.
 
    1. Edit the mapping for each region to remove the unsupported architectures \(`PV64`, `HVM64`, or `HVMG2`\) and their associated AMI IDs\.
 
-   1. For each remaining region and architecture mapping, specify the corresponding AMI ID from the product details page in AWS Marketplace\.
+   1. For each remaining AWS Region and architecture mapping, specify the corresponding AMI ID from the product details page in AWS Marketplace\.
 
    When you have finished editing the `AWSRegionArch2AMI` mappings, your code might look similar to the following example:
 

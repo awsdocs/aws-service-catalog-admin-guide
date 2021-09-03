@@ -1,68 +1,117 @@
-# Baseline Permissions<a name="baseline-permissions"></a>
+# Baseline permissions<a name="baseline-permissions"></a>
 
-This section provides instructions on how to set up the baseline AWS users and permissions needed for the AWS Service Catalog Connector for ServiceNow\. For each AWS account, the Connector for ServiceNow requires two IAM users and three roles:
-+ **AWS Service Catalog Sync User**: IAM user to sync AWS portfolios and products to ServiceNow catalog items \(**AWSServiceCatalogAdminReadOnlyAccess** managed policy\)\.
-+ **AWS Service Catalog End User role**: IAM role configured as an AWS Service Catalog end user and assigned to each AWS Service Catalog portfolio\.
-+ **AWS Service Catalog End User**: Enables Connector for ServiceNow to provision AWS products by assuming a role that contains the trust relationship with the account and policies needed for the end user privileges in AWS Service Catalog\.
-+ **SCConnect Launch role**: IAM role used to place baseline AWS service permissions into the AWS Service Catalog launch constraints\. Configuring this role enables segregation of duty through provisioning product resources on behalf of the ServiceNow end user\. The SCConnectLaunch role baseline contains permissions to Amazon EC2 and Amazon S3 services\. If your products contain more AWS services, you must either include those services in the  `SCConnectLaunch` role or create new launch roles\.
+This section provides instructions on how to set up baseline AWS users and permissions for the AWS Service Management Connector for ServiceNow\.
 
-## Creating AWS Service Catalog Sync User<a name="scsyncuser"></a>
+## Available template for baseline permissions<a name="baseline-permissions-template"></a>
 
-The following section describes how to create the AWS Service Catalog Sync user and associate the appropriate IAM permission\. To perform this task, you need IAM permissions to create new users\.
+To use an AWS CloudFormation template to set up the AWS configurations of the Connector for ServiceNow, see the AWS configurations for Connector for ServiceNow 3\.7\.1 \- [AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForServiceNowv-AWS_Configurations_Commercialv3.7.1.json) and [AWS GovCloud Regions](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForServiceNowv-AWS_Configurations_GovCloudv3.7.1.json)\.
 
-**To create AWS Service Catalog sync user**
+**Note**  
+If you use the Connector for ServiceNow v3\.7\.1\_AWS Configuration template, skip to [Configuring AWS Service Catalog](configure-sc.md)\. 
 
-1. Go to [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\. Following the instructions there, create a policy called **SCConnectorAdmin** for ServiceNow administrators to delete AWS Service Catalog products in ServiceNow that do not have self\-service actions associated\. ServiceNow administrators can also view budgets associated to AWS Service Catalog portfolios and products\. Copy the following policy and paste it into **Policy Document**:
+ For each AWS account, the Connector for ServiceNow requires two IAM users:
++ **AWS Sync User**: An IAM user to sync AWS resources \(such as portfolios, products, automation documents \(runbook\), configuration items, and security findings\) to ServiceNow\.
++ **AWS End User role**: An IAM user who can provision products as an end user, execute requests, and view resources that ServiceNow exposes\. This role includes any required roles to provision and execute\. 
+
+## Creating AWS Service Management Connector Sync user<a name="scsyncuser"></a>
+
+The following section describes how to create the AWS Sync user and associate the appropriate IAM permission\. To perform this task, you need IAM permissions to create new users\.
+
+**To create AWS Service Management Connector sync user**
+
+1. Follow the instructions in [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) to create a sync user \(SMSyncUser\)\. The user needs programmatic and AWS Management Console access to follow the Connector for ServiceNow installation instructions\. 
+
+1. Set permissions for your sync user \(SMSyncUser\)\. Choose **Attach existing policies directly** and select:
+   + **AWSServiceCatalogAdminReadOnlyAccess** \(AWS managed policy\)
+   + **AmazonSSMReadOnlyAccess** \(AWS managed policy\)
+   + **AWSConfigUserAccess** \(AWS managed policy\)
+
+1. Create this policy: `ConfigBidirectionalSecurityHubSQSBaseline`\. Then follow the instructions in [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html), and add this code in the JSON editor: 
+
+   ```
+   {
+   
+       "Version": "2012-10-17",
+   
+       "Statement": [
+   
+           {
+   
+               "Sid": "VisualEditor0",
+   
+               "Effect": "Allow",
+   
+               "Action": [
+   
+                   "cloudformation:RegisterType",
+   
+                   "cloudformation:DescribeTypeRegistration",
+   
+                   "cloudformation:DeregisterType",
+   
+   		        "sqs:ReceiveMessage",
+   
+   		         "sqs:DeleteMessage",
+   
+                             "sqs:DeleteMessageBatch",
+   
+   		          "config:PutResourceConfig",
+   
+   		          "securityhub:BatchUpdateFindings"
+   
+               ],
+   
+               "Resource": "*"
+   
+           }
+   
+       ]
+   
+   }
+   ```
+
+   The provided AWS Configuration template consists of two policies: `ConfigBiDirectionalPolicy` and `SecurityHubPolicy`\.
+
+1. Create this policy: `OpsCenterExecutionPolicy` Then follow the instructions in [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html), and add this code in the JSON editor:
 
    ```
      {
-            "Version": "2012-10-17",
-            "Statement": [{
-               "Sid": "VisualEditor0",
+       "Version": "2012-10-17",
+       "Statement": [
+           {
                "Effect": "Allow",
                "Action": [
-                  "servicecatalog:DisassociateProductFromPortfolio",
-                  "servicecatalog:DeleteProduct",
-                  "servicecatalog:DeleteConstraint",
-                  "servicecatalog:DeleteProvisionedProductPlan",
-                  "servicecatalog:DeleteProvisioningArtifact",
-                  "servicecatalog:ListBudgetsForResource",
-                  "servicecatalog:SearchProductsAsAdmin",
-                  "servicecatalog:ListPortfoliosForProduct",
-                  "servicecatalog:ListPrincipalsForPortfolio",
-                  "servicecatalog:ListAcceptedPortfolioShares",            
-                  "budgets:ViewBudget"
-               ],
+                   "ssm:GetOpsItem",
+                   "ssm:UpdateOpsItem",
+                   "ssm:DescribeOpsItems"
+                ],
                "Resource": "*"
-            }]
-         }
+           }
+       ]
+   }
    ```
 
-1. Go to [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\. Following the instructions there, create a sync user \(that is, SCSyncUser\)\. The user needs programmatic and AWS Management Console access to follow the Connector for ServiceNow installation instructions\.
+1. Add a policy that allows `budgets:ViewBudget` on all resources \(\*\)\. 
 
-1. Set permissions for your sync user \(SCSyncUser\)\. Choose **Attach existing policies directly** and select the ****AWSServiceCatalogAdminReadOnlyAccess**** and **SCConnectorAdmin** policies\.
-**Note**  
-The **ServiceCatalogAdminReadOnlyAccess** policy was deprecated\. If you are using a current version of the Connector for ServiceNow, update your SCSyncUser with the correct managed policy: ****AWSServiceCatalogAdminReadOnlyAccess****\.
+1. Review and choose **Create User**\. 
 
-1. Review and choose **Create User**\.
+1. Note the access and secret access information\. Download the \.csv file that contains the user credential information\.
 
-1. Note the Access and Secret Access information\. Download the \.csv file that contains the user credential information\.
+## Creating AWS Service Catalog end user<a name="scenduser"></a>
 
-## Creating AWS Service Catalog End User<a name="scenduser"></a>
+ This section describes how to create the AWS Service Management Connector end user and associates the appropriate IAM permission\. To perform this task, you need IAM permissions to create new users\. 
 
- The following section describes how to create the AWS Service Catalog end user and associate the appropriate IAM permission\. This AWS end user \(SCEndUser\) requires you to first create an AWS role \(such as SnowEndUser\) with the required IAM permissions\. The AWS end user will assume the AWS role\. To perform this task, you need IAM permissions to create new users\. 
+**To create AWS Service Management Connector end user**
 
- If you are upgrading from an earlier version of the Connector, note that the **ServiceCatalogServiceNowAdditionalPermissions** AWS policy is no longer needed for the Connector for ServiceNow\. Proceed to the **Create a SnowEndUser** role step\. 
+1.  Follow the instructions in [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) to create a user \(SMEndUser\)\. The user needs programmatic and AWS Management Console access to follow the Connector for ServiceNow installation instructions\.
 
-**To create AWS Service Catalog end user**
+    For products using AWS CloudFormation StackSets, you need to create a StackSet inline policy\. With AWS CloudFormation StackSets, you are able to create products across multiple accounts and Regions\. 
 
-1.  You need to first create the AWS role \(such as SnowEndUser\)\. Go to [Create a role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)\. 
+   Using an administrator account, you define and manage an AWS Service Catalog product\. You also use it to provision stacks into selected target accounts across specified Regions\. You need to have the necessary permissions defined in your AWS accounts\. 
 
-    For products using AWS CloudFormation StackSets, you need to create a StackSet inline policy\. With AWS CloudFormation StackSets, you are able to create products that are deployed across multiple accounts and regions\. Using an administrator account, you define and manage an AWS Service Catalog product, and use it as the basis for provisioning stacks into selected target accounts across specified regions\. You need to have the necessary permissions defined in your AWS accounts\. 
+    To set up the necessary permissions, see [Granting Permissions for Stack Set Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)\. Follow the instructions to create an **AWSCloudFormationStackSetAdministrationRole** and an **AWSCloudFormationStackSetExecutionRole**\. 
 
-    To set up the necessary permissions, go to [Granting Permissions for Stack Set Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)\. Following the instructions there, create an **AWSCloudFormationStackSetAdministrationRole** and an **AWSCloudFormationStackSetExecutionRole**\. 
-
-    Create the StackSet inline policy to enable provisioning a product across multiple regions within one account\. 
+    Create the StackSet inline policy to enable provisioning a product across multiple Regions within one account\. 
 
    ```
        {
@@ -89,65 +138,29 @@ The **ServiceCatalogAdminReadOnlyAccess** policy was deprecated\. If you are usi
        }
    ```
 **Note**  
-Replace **123456789123** with your account information\. The [Connector for ServiceNow v2\.3\.4 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.4+-AWS_Configurations_final.json) and [Connector for ServiceNow v2\.3\.4 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.4+-AWS_Configurations_GovCloud_final.json) files include the stack set permissions\.
+Replace **123456789123** with your account information\. The [Connector for ServiceNow v3\.7\.1 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForServiceNowv-AWS_Configurations_Commercialv3.7.1.json) and [Connector for ServiceNow v3\.7\.1 \- AWS GovCloud Regions]( https://servicecatalogconnector.s3.amazonaws.com/SM_ConnectorForServiceNowv-AWS_Configurations_GovCloudv3.7.1.json) files include the stack set permissions\.
 
-1. Add the following permissions \(policies\) to the SnowEndUser role:
-   + **AWSServiceCatalogEndUserFullAccess** \- Note: The **ServiceCatalogEndUserFullAccess** policy was deprecated\. If you are using a current version of the Connector for ServiceNow, update the SCSyncUser with the correct AWS managed policy\.
-   + **StackSet \(inline policy\)**
-   + **AmazonEC2ReadOnlyAccess**
-   + **AmazonS3ReadOnlyAccess** \- Note: For AWS Service Catalog products using AWS CloudFormation StackSets, you need to modify the SnowEndUser role to include the ReadOnly permissions for the service\(s\) you want to provision\. For example, to provision an Amazon S3 bucket, include the AmazonS3ReadOnlyAccess policy to the SnowEndUser role\.
-   + Create a trust relationship on the SnowEndUser role to the account\. Copy and paste the following text into the Trust Relationship \(replacing the number string for ARN with your account information\):
+1. Add the following permissions \(policies\) to the user:
+   + **AWSServiceCatalogEndUserFullAccess** \(AWS managed policy\)
+   + **StackSet \(inline policy\)** \- For AWS Service Catalog products with stack sets, you need to modify the SMEndUser to include the Read Only permissions for the services you want to provision\. For example, to provision an Amazon S3 bucket, include the **AmazonS3ReadOnlyAccess** policy to the SMEndUser\.
+   + **OpsCenterExecutionPolicy**
+   + **AmazonEC2ReadOnlyAccess** \(AWS managed policy\)
+   + **AmazonS3ReadOnlyAccess** \(AWS managed policy\)
 
-     ```
-                                                 {
-                       "Version": "2012-10-17",
-                       "Statement": [
-                         {
-                           "Effect": "Allow",
-                           "Principal": {
-                             "AWS": "arn:aws:iam::123456789123:root"
-                           },
-                           "Action": "sts:AssumeRole",
-                           "Condition": {}
-                         }
-                       ]
-                     }
-     ```
+## Creating SCConnectLaunch role<a name="scconnectlaunchrole"></a>
 
-1. Go to [Create a policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\. Following the instructions there, create a policy called **StsAssume\-SC**\. Copy and paste the following text into the JSON editor \(replacing the number string for ARN with your account information\):
+The SCConnect Launch role is an IAM role that places baseline AWS service permissions into the AWS Service Catalog launch constraints\. Configuring this role enables segregation of duty through provisioning product resources for ServiceNow end users\. 
 
-   ```
-                                   {
-                   "Version": "2012-10-17",
-                   "Statement": [
-                       {
-                           "Sid": "VisualEditor0",
-                           "Effect": "Allow",
-                           "Action": "sts:AssumeRole",
-                           "Resource": "arn:aws:iam:: 123456789123:role/SnowEndUser"
-                       }
-                   ]
-               }
-   ```
+The SCConnectLaunch role baseline contains permissions to Amazon EC2 and Amazon S3 services\. If your products contain more AWS services, you must either include those services in the SCConnectLaunch role or create new launch roles\.
 
-1.  Go to [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\. Following the instructions there, create a user \(such as SCEndUser\)\. The user needs programmatic and AWS Management Console access to follow the ServiceNow Connector installation instructions\. 
-
-1.  Attach the assume policy \(StsAssume\-SC\) to your end user \(SCEndUser\)\. Choose **Attach existing policies directly** and select **StsAssume\-SC**\. 
-
-1. Review and choose **Create User**\.
-
-1. Note the Access and Secret Access information\. Download the \.csv file that contains the user credential information\.
-
-## Creating SCConnectLaunch Role<a name="scconnectlaunchrole"></a>
-
-The following section describes how to create the **SCConnectLaunch** role\. This role is used to place baseline AWS service permissions into the AWS Service Catalog launch constraints\. For more information, see [AWS Service Catalog Launch Constraints](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/constraints-launch.html)\.
+This section describes how to create the **SCConnectLaunch** role\. This role places baseline AWS service permissions in the AWS Service Catalog launch constraints\. For more information, see [AWS Service Catalog Launch Constraints](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/constraints-launch.html)\.
 
 **To create SCConnectLaunch role**
 
-1. Create the **AWSCloudFormationFullAccess** policy\. Choose **create policy** and then paste the following in the JSON editor:
+1. Create this policy: `AWSCloudFormationFullAccess` policy\. Choose **create policy** and add this code in the JSON editor:
 
    ```
-                               {
+                                {
                "Version": "2012-10-17",
                "Statement": [
                    {
@@ -179,9 +192,9 @@ The following section describes how to create the **SCConnectLaunch** role\. Thi
            }
    ```
 **Note**  
-**AWSCloudFormationFullAccess** now includes additional permissions for ChangeSets\.
+**AWSCloudFormationFullAccess** includes additional permissions for ChangeSets\.
 
-1.  Create a policy called **ServiceCatalogSSMActionsBaseline**\. Follow the instructions on [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html), and paste the following into the JSON editor: 
+1.  Create this policy: `ServicecodeCatalogSSMActionsBaseline`\. Follow the instructions in [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html), add this code in the JSON editor: 
 
    ```
                                {
@@ -208,7 +221,7 @@ The following section describes how to create the **SCConnectLaunch** role\. Thi
            }
    ```
 
-1. Create the **SCConnectLaunch** role\. Assign the trust relationship to AWS Service Catalog\.
+1. Create the **SCConnectLaunch** role\. Then assign the trust relationship to AWS Service Catalog\.
 
    ```
                                {
@@ -226,8 +239,10 @@ The following section describes how to create the **SCConnectLaunch** role\. Thi
            }
    ```
 
-1. Attach the relevant policies to the **SCConnectLaunch** role\. Attach the following baseline IAM policies:
+1. Attach the relevant policies to the **SCConnectLaunch** role\. 
+
+   Attach these baseline IAM policies:
    + **AmazonEC2FullAccess** \(AWS managed policy\)
    + **AmazonS3FullAccess** \(AWS managed policy\)
    + **AWSCloudFormationFullAccess** \(custom managed policy\)
-   + **ServiceCatalogSSMActionsBaseline**
+   + **ServiceCatalogSSMActionsBaseline** \(custom managed policy\)

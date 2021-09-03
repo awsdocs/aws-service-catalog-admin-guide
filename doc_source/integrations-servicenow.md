@@ -1,70 +1,88 @@
-# AWS Service Catalog Connector for ServiceNow<a name="integrations-servicenow"></a>
+# AWS Service Management Connector for ServiceNow<a name="integrations-servicenow"></a>
 
-To help customers integrate provisioning secure, compliant, and pre\-approved AWS products into their ServiceNow portal, AWS created the AWS Service Catalog Connector for ServiceNow\.
+The AWS Service Management Connector for ServiceNow \(formerly the AWS Service Catalog Connector\) enables ServiceNow end users to provision, manage, and operate AWS resources natively through ServiceNow\. 
 
-AWS Service Catalog Connector for ServiceNow synchronizes AWS Service Catalog portfolios and products with the ServiceNow Service Catalog to enable ServiceNow users to request approved AWS products via ServiceNow\.
+ServiceNow administrators can:
++ Provide pre\-approved, secured, and governed AWS resources to end users through AWS Service Catalog\.
++ Execute automation playbooks through AWS Systems Manager\. 
++ View and manage operational items as incidents through AWS Systems Manager OpsCenter
++ Track resources in the CMDB, powered by AWS Config, seamlessly on ServiceNow with the AWS Service Management Connector\.
++ Define new resource types based on ServiceNow CMDB tables and synchronize these with AWS Config custom resources\.
++ Configure syncing AWS Security Hub findings to ServiceNow incidents or problems\.
+
+ ServiceNow end users can: 
++ Browse, request, and provision pre\-secured AWS solutions\.
++ View AppRegistry applications, attribute groups, and related resource details with AWS Service Catalog \- AppRegistry
++ View, update and resolve incidents from AWS Systems Manager OpsItems
++ View configuration item details\.
++ Execute workflows in ServiceNow on AWS resources\. 
++ View, update, and resolve ServiceNow incidents or problems through AWS Security Hub findings\.
+
+These features simplify AWS product request actions for ServiceNow users, and provide ServiceNow governance and oversight over AWS products\. 
+
+The AWS\-supplied connector is available at no charge in the ServiceNow store\. It supports ServiceNow platform releases Rome \(R\), Quebec \(Q \- Patch 5 going forward\), Paris \(P\) and Orlando \(O\)\. These new features are generally available in all AWS Regions where AWS Service Catalog, AWS Conﬁg, and AWS Systems Manager services are available\.
 
 **Topics**
 + [Background](#background)
-+ [Getting Started](#getting-started)
-+ [Release Notes](#release-notes)
-+ [Baseline Permissions](baseline-permissions.md)
++ [Getting started](#getting-started)
++ [Release notes](#release-notes)
++ [Baseline permissions](baseline-permissions.md)
 + [Configuring AWS Service Catalog](configure-sc.md)
-+ [Creating StackSet Constraints](stackset-constraints.md)
-+ [Relating Budgets to Products and Portfolios](servicenow-budgets.md)
-+ [Configuring ServiceNow](configure-snow.md)
-+ [Validating Configurations](validate-configurations.md)
-+ [ServiceNow Additional Administrator Features](additional-configurations.md)
-+ [Upgrade Instructions](upgrade-instructions.md)
++ [Configuring AWS Config](servicenow-aws-config.md)
++ [Configuring AWS Security Hub](servicenow-security-hub.md)
++ [Configuring AWS Systems Manager OpsCenter](configure-ops.md)
++ [Configuring ServiceNow](config-servnow.md)
++ [Configuring AWS Config integration in ServiceNow](configure-integ.md)
++ [Configuring AWS Systems Manager OpsCenter integration in ServiceNow](integrate-opscenter.md)
++ [Validating configurations](validate-configurations.md)
++ [ServiceNow additional features](additional-configurations.md)
++ [Version 2\.3\.4 release transition instructions](transition-instructions.md)
 
 ## Background<a name="background"></a>
 
-AWS Service Catalog allows you to centrally manage commonly deployed AWS services and provisioned software products\. It helps your organization achieve consistent governance and compliance requirements, while enabling users to quickly deploy only the approved AWS services they need\.
+[AWS Service Catalog](http://aws.amazon.com/servicecatalog) allows you to centrally manage commonly deployed AWS services and provisioned software products\. It helps your organization achieve consistent governance and compliance requirements, while enabling users to quickly deploy only the approved AWS services they need\. It also offers AWS Service Catalog\-AppRegistry so you can create a repository of your applications and associated resources\.
 
-[ServiceNow](https://www.servicenow.com/) is an enterprise service management platform that places a service‑oriented lens on the activities, tasks, and processes that make up day‑to‑day work life to enable a modern work environment\. [ServiceNow Service Catalog](https://www.servicenow.com/products/it-service-automation-applications/service-catalog.html) is a self\-service application that end users can use to order IT services based on request fulfillment approvals and workflows\.
+[AWS Config](http://aws.amazon.com/config) enables you to assess, audit, and evaluate the configurations of your AWS resources\. AWS Config continuously monitors and records your AWS resource configurations and allows you to automate the evaluation of recorded configurations against desired configurations\.
 
-## Getting Started<a name="getting-started"></a>
+[AWS Systems Manager](http://aws.amazon.com/systems-manager) gives you visibility and control of your infrastructure on AWS\. Systems Manager provides a unified user interface so you can view operational data from multiple AWS services, investigate and resolve operational issues through the OpsCenter, and automate operational tasks across your AWS resources\.
 
-Before installing the AWS Service Catalog Connector for ServiceNow, verify that you have the necessary permissions in your AWS account and ServiceNow instance\.
+[AWS Security Hub](https://aws.amazon.com/security-hub/?aws-security-hub-blogs.sort-by=item.additionalFields.createdDate&aws-security-hub-blogs.sort-order=desc) gives you a comprehensive view of your security alerts and security posture across your AWS accounts\. With Security Hub, there is a single place that aggregates, organizes, and prioritizes your security alerts, or findings\. 
 
-For a video showing how to integrate AWS products into your ServiceNow portal, see [Integrate AWS products into Your ServiceNow Portal](https://youtu.be/cf_nWrr-CfU)\.
+[ServiceNow](https://www.servicenow.com/) is an enterprise service management platform that places a service\-oriented lens on the activities, tasks, and processes that enables day\-to\-day work life and a modern work environment\. [ServiceNow Service Catalog](https://www.servicenow.com/products/it-service-automation-applications/service-catalog.html) is a self\-service application that end users can use to order IT services based on request fulfillment approvals and workflows\. The [ServiceNow CMDB](https://docs.servicenow.com/bundle/orlando-servicenow-platform/page/product/configuration-management/concept/c_ITILConfigurationManagement.html) provides resource transparency and relationships for the logical components of a service\. 
+
+## Getting started<a name="getting-started"></a>
+
+Before installing the AWS Service Management Connector for ServiceNow, verify that you have the necessary permissions in your AWS account and ServiceNow instance\.
 
 ### AWS prerequisites<a name="aws-prereqs"></a>
 
-To get started you need an AWS account to configure your AWS portfolios and products\. For details, see [Setting Up for AWS Service Catalog](setup.md)\.
+To start, use the following services:
++  AWS Service Catalog with the Connector 
 
-For each AWS account, the Connector for ServiceNow also requires two AWS Identity and Access Management \(IAM\) users and two IAM roles:
-+ An IAM user to sync AWS Service Catalog portfolios and products to ServiceNow Service Catalog items\.
-+ An IAM role configured as an AWS Service Catalog end user and assigned to each portfolio\.
-+ An IAM end user to assume the previous end user role\. This end user has a baseline of permissions to provision AWS services in the ServiceNow Service Catalog\. This ServiceNow end user is linked to the end user role in IAM\.
-+ An IAM launch role used to place baseline AWS service permissions into the AWS Service Catalog launch constraints\. Configuring this role enables segregation of duty by provisioning product resources on behalf of the ServiceNow end user\.
+  You need an AWS account to configure your AWS portfolios and products\. For details, see [Setting up for AWS Service Catalog](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/setup.html) and [Using AWS Service Catalog\-AppRegistry\.](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/appregistry.html)
++  AWS Config details
 
-Baseline permissions enable an end user to provision the following AWS services: Amazon Simple Storage Service and Amazon Elastic Compute Cloud\. To allow end users to provision AWS services beyond the baseline permissions, you must include the additional AWS service permissions to the launch role\. For information about initial permissions setup actions, see [Baseline Permissions](baseline-permissions.md)\.
+  Configure the service settings to record data for the resource types of interest\. We recommend you include provisioned products and AWS CloudFormation stacks, in addition to the major resource types that your team uses\. For more information, see [Setting up AWS Config with the console](https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html)\. This version of the Connector enables the import of aggregated Config data in a single AWS account from more than one AWS Region or account\. To use this feature, you must configure an aggregator in AWS\. For more information, see [Setting up an Aggregator using the console](https://docs.aws.amazon.com/config/latest/developerguide/setup-aggregator-console.html)\. 
++  AWS Systems Manager Automation with the Connector
 
-**Note**  
- To use an AWS CloudFormation template to set up the AWS configurations of the Connector for ServiceNow, see the two JSON AWS Configurations for: [Connector for ServiceNow v2\.3\.4 \- AWS Commercial Regions](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.4+-AWS_Configurations_final.json) and [Connector for ServiceNow v2\.3\.4 \- AWS GovCloud West Region](https://servicecatalogconnector.s3.amazonaws.com/SC_ConnectorForServiceNowv2.3.4+-AWS_Configurations_GovCloud_final.json)\. 
+  This feature requires no AWS\-side set up\. As standard, AWS provides a number of automation documents \(runbooks\)\. If you want additional automation documents \(runbook\), retrieve them in the Connector\. For more information, see [Working with Automation Runbooks](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-documents.html)\. 
++  AWS Systems Manager OpsCenter with the Connector
 
-### ServiceNow Prerequisites<a name="servicenow-prereqs"></a>
+  You must enable the service in all Regions and accounts where you want to sync OpsItems\. For more information, see [ Getting started with OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html) 
++ AWS Security Hub with the Connector
 
-In addition to the AWS account, you need a ServiceNow instance to install the ServiceNow Connector scoped application\. The initial installation should occur in either an enterprise sandbox or a [ServiceNow Personal Developer Instance](https://developer.servicenow.com/app.do#!/document/content/app_store_doc_getting_started_newyork_topic_lyf_bf2_3r?v=newyork) \(PDI\), depending on your organization’s technology governance requirements\. The ServiceNow administrator needs the admin role to install the Connector for ServiceNow scoped application\.
+  You must enable the service in all Regions and accounts where you want to sync Findings\. For details see [Setting up Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html)\. We recommend you connect ServiceNow with the primary \(master\) AWS account for AWS Security Hub\. For more information, see [Managing master and member accounts](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts.html)\.
 
-## Release Notes<a name="release-notes"></a>
+### ServiceNow prerequisites<a name="servicenow-prereqs"></a>
 
-**Version 2\.3\.4** of the AWS Service Catalog Connector for ServiceNow includes a fix to the ServiceNow platform regression supporting the scoped app call `Object.getPrototypeOf(...)` to create and return an object safe for cross\-scope access\. Prior to this fix, customers would receive a `prototype_not_allowed` error when validating regions within the AWS Service Catalog Connector on the latest ServiceNow platform releases or patches \(Orlando, New York, and Madrid\)\.
+In addition to the AWS account, you need a ServiceNow instance to install the ServiceNow Connector scoped application\. The initial installation should occur in either an enterprise sandbox or a [ServiceNow Personal Developer Instance](https://developer.servicenow.com/app.do#!/document/content/app_store_doc_getting_started_newyork_topic_lyf_bf2_3r?v=newyork) \(PDI\), depending on your organization’s technology governance requirements\. 
 
-This version also includes prior AWS Service Catalog Connector for ServiceNow features such as:
-+ The ability for administrators to view portfolio and product budgets and actual costs\. \(Requires budgets to be associated within AWS Service Catalog\.\)
-+ Support for AWS GovCloud West region\.
-+ The ability for end users to choose accounts and regions for StackSet deployments\.
-+ The ability to view provisioned product events and outputs in the ServiceNow request item\. This includes closure of ServiceNow request items when products are terminated\.
+The ServiceNow administrator needs the admin role to install the Connector for ServiceNow scoped application\.
 
-This version also includes prior AWS Service Catalog Connector for ServiceNow features such as:
-+ Support for AWS CloudFormation StackSets, enabling launch of AWS Service Catalog products across multiple regions and accounts\.
-+ Support for AWS CloudFormation Change Sets, enabling a preview of resource changes from a launch or update\.
-+ Display of AWS Service Catalog portfolios \(including correlated products\) as sub\-categories in the ServiceNow Service Catalog\.
-+ Support AWS Service Catalog self\-service actions using AWS Systems Manager documents\.
-+ Support AWS Service Catalog post\-provision operational actions to update and terminate products\.
-+ Rendering of AWS Service Catalog products in the ServiceNow Portal page\.
-+ Multi\-account support\.
-+ Validation of AWS Regions and identities associated with syncing AWS and ServiceNow\.
-+ Synchronization of product details in the My Asset/CMDB view\.
+## Release notes<a name="release-notes"></a>
+
+Version 3\.7\.1 of the AWS Service Management Connector for ServiceNow \(formerly the AWS Service Catalog Connector\) includes:
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/integrations-servicenow.html)
+
+This version also includes prior AWS Service Management Connector for ServiceNow feature integrations to AWS services, such as AWS Security Hub, AWS Config, and AWS Systems Manager Automation\.
