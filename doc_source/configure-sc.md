@@ -14,7 +14,7 @@ After you create two IAM users with baseline permissions in each account, the ne
 **Note**  
 The AWS configuration design requires each AWS Service Catalog product to have a launch constraint\. Failure to follow this step could result in an “Unable to Retrieve Parameter” message in the ServiceNow Service Catalog\. 
 
-1. Add the SnowEndUser IAM role to the AWS Service Catalog portfolio\. For additional user access instructions, see [Granting Access to Users](catalogs_portfolios_users.md)\. 
+1. Add the SnowEndUser IAM user to the AWS Service Catalog portfolio\. For additional user access instructions, see [Granting Access to Users](catalogs_portfolios_users.md)\. 
 
 **Note**  
  The AWS configuration design requires each AWS Service Catalog product to have either a launch constraint or a stack set constraint\. Failure to follow this step could result in an “Unable to Retrieve Parameter” error in the ServiceNow Service Catalog\. 
