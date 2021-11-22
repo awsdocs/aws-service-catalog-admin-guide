@@ -17,7 +17,7 @@ If you haven't created an IAM group for the endusers, see [Grant Permissions to 
 
 **Working with launch roles and launch constraints**
 
-When you configure a launch role for a launch constraint, you must use this string for `s3:GetObject`:
+When you configure a launch role for a launch constraint, you must use add this string for `s3:GetObject` in your IAM role policy:
 
 `"s3:ExistingObjectTag/servicecatalog:provisioning":"true"`.
 
