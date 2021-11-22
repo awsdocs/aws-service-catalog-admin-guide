@@ -14,3 +14,32 @@ If you haven't created an IAM group for the endusers, see [Grant Permissions to 
 1. On the **Groups** tab, select the checkbox for the IAM group for the end users\.
 
 1. Choose **Add Access**\.
+
+**Working with launch roles and launch constraints**
+
+When you configure a launch role for a launch constraint, you must use this string for `s3:GetObject`:
+
+`"s3:ExistingObjectTag/servicecatalog:provisioning":"true"`.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "s3:ExistingObjectTag/servicecatalog:provisioning": "true"
+                }
+            }
+        }
+    ]
+}
+```
+
+
+
