@@ -143,8 +143,8 @@ You can also update a portfolio share to include TagOptions\. All TagOptions tha
 
 1. In **Accounts shared with**, choose an account ID and then choose **Actions**\.
 
-1. Select **Update unshare** or **Unshare**\.
+1. Select **Update share** or **Unshare**\.
 
-   When you select **Update unshare**, choose **Enable** to initiate sharing TagOptions\. The account you shared displays in the **Accounts shared with** section\.
+   When you select **Update share**, choose **Enable** to initiate sharing TagOptions\. The account you shared displays in the **Accounts shared with** section\.
 
    When you select **Unshare**, confirm you no longer want to share the account\.
