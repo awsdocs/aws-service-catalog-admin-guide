@@ -73,10 +73,17 @@ The `servicecatalog:ProvisionProduct`, `servicecatalog:TerminateProduct`, and `s
 **Note**  
 When you configure a launch role for a launch constraint, you must use this string: `"s3:ExistingObjectTag/servicecatalog:provisioning":"true"`\. 
 
-1. Add a line to the policy for each additional service the product uses\. For example, to add permission for Amazon Relational Database Service \(Amazon RDS\), enter a comma at the end of the last line in the `Action` list, and then add the following line: 
+1. Add a new statement to  the policy for each additional service the product uses\. For example, to add permission for Amazon Relational Database Service \(Amazon RDS\), and then add the following lines: 
 
    ```
-   "rds:*"
+       {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+               "rds:*",
+            ],
+            "Resource": "*"
+        }
    ```
 
 1. Choose **Apply Policy**\.
